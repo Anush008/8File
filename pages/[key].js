@@ -1,17 +1,21 @@
 import { useRouter } from 'next/router'
-
+import execute from '../utils/MySQL';
 export async function getServerSideProps(context) {
+  const { key } = context.query;
+  const result = await execute("SELECT * FROM `files` WHERE `ID` = ?", [key]);
+  if (result.length === 0) {
+    return {
+      notFound: true,
+    }
+  }
+  const data = result[0];
+  console.log(data);
   return {
-    props: {}, // will be passed to the page component as props
+   props: data
   }
 }
 
-const Post = () => {
-  const router = useRouter()
-  const { key } = router.query;
-  const file = {name:"docs.mp4", size: 545541556, key: "", uploadedOn: "23-3-20002"};
-
-  return <p>Post: {key}</p>
+const Post = ({ID, S3KEY, SIZE, NAME}) => {
+  return <p>Post: {S3KEY}</p>
 }
-
 export default Post
