@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import crypto from 'crypto';
 import s3 from '../../utils/AWS';
-//import sql from '../../utils/Postgres';
+import execute from '../../utils/MySQL';
 
 export default async function handler(req, res) {
   const PASSPHRASE = req.query.key;
@@ -30,10 +30,7 @@ export default async function handler(req, res) {
     signed.fields["X-Amz-Server-Side-Encryption-Customer-Key"] = customerKey.toString('base64');
     signed.fields["X-Amz-Server-Side-Encryption-Customer-Key-MD5"] = md5;
     signed.fileId = FILE_ID;
-    console.log(21);
-    //const values = await sql`select * from files`;
-    //signed.values["values"] = values;
     res.status(200).json(signed);
-    console.log(values);
+    execute("INSERT INTO `files` (`ID`, `S3KEY`, `SIZE`, `NAME`) VALUES (?, ?, ?, ?)", [FILE_ID, KEY, FILE_SIZE, FILE_NAME]);
   });
 }
