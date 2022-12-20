@@ -2,15 +2,18 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import crypto from 'crypto';
-import { v4 as uuidv4 } from 'uuid';
 import s3 from '../../utils/AWS';
+//import sql from '../../utils/Postgres';
 
 export default async function handler(req, res) {
-  const KEY_PARAM = req.query.key;
+  const PASSPHRASE = req.query.key;
   const FILE_NAME = req.query.name;
+  const FILE_ID = crypto.randomBytes(2).toString("hex");
+  const KEY = FILE_ID + "-" + FILE_NAME;
+  const FILE_SIZE = req.query.size;
   await s3.createPresignedPost({
     Fields: {
-      key: uuidv4(),
+      key: KEY,
     },
      Conditions: [
       ["starts-with", "$x-amz-server-side-encryption-customer-key", ""],
@@ -19,13 +22,18 @@ export default async function handler(req, res) {
     ],
     Expires: 3600,
     Bucket: 'witcherbucket21'
-  }, (err, signed) => {
+  }, async(err, signed) => {
     if(err) res.end(err.message);
-    const key = Buffer.alloc(32, KEY_PARAM);
-    const md5 = crypto.createHash('md5').update(key) .digest("base64");
+    const customerKey = Buffer.alloc(32, PASSPHRASE);
+    const md5 = crypto.createHash('md5').update(customerKey) .digest("base64");
     signed.fields["X-Amz-Server-Side-Encryption-Customer-Algorithm"] = "AES256";
-    signed.fields["X-Amz-Server-Side-Encryption-Customer-Key"] = key.toString('base64');
+    signed.fields["X-Amz-Server-Side-Encryption-Customer-Key"] = customerKey.toString('base64');
     signed.fields["X-Amz-Server-Side-Encryption-Customer-Key-MD5"] = md5;
+    signed.fileId = FILE_ID;
+    console.log(21);
+    //const values = await sql`select * from files`;
+    //signed.values["values"] = values;
     res.status(200).json(signed);
+    console.log(values);
   });
 }
