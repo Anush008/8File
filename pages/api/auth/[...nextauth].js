@@ -1,19 +1,25 @@
 import NextAuth from "next-auth"
-import CredentialsProvider from "next-auth/providers/credentials"
+import EmailProvider from "next-auth/providers/email"
+import { TypeORMLegacyAdapter } from "@next-auth/typeorm-legacy-adapter"
+
 export const authOptions = {
+  adapter: TypeORMLegacyAdapter({
+    type: "mysql",
+    host: "127.0.0.1",
+    port: 3306,
+    username: "anush",
+    password: "anush",
+    database: "test",
+    synchronize: true,
+  }),
+  
   // Configure one or more authentication providers
   providers: [
-    CredentialsProvider({
-    name: 'Credentials',
-      credentials: {
-          username: { label: "Username", type: "text", placeholder: "jsmith" },
-          password: {  label: "Password", type: "password" }
-        },
-        async authorize(credentials, req) {
-            console.log(credentials);
-   return {id: 1, name: 'J Smith', email: 'test@gmailcom'};
-        }
-      })
+    EmailProvider({
+      server: process.env.EMAIL_SERVER,
+      from: process.env.EMAIL_FROM,
+      maxAge: 24 * 60 * 60, // How long email links are valid for (default 24h)
+    })
   ],
 }
 export default NextAuth(authOptions)

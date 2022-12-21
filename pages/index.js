@@ -1,8 +1,10 @@
 import {useRef, useState} from 'react';
 import axios from 'axios';
+import { useSession } from "next-auth/react";
 
 
 export default function Home() {
+  const { data: session, status } = useSession()
   const inputRef = useRef(null);
   const fileRef = useRef(null);
   const [progress, setProgress] = useState(0);
@@ -25,6 +27,11 @@ export default function Home() {
  
   return (
     <>
+    {status === "loading" && <p>Loading...</p>}
+    {status === "unauthenticated" && <p>Unauthenticated</p>}
+    {status === "authenticated" && <div>
+      <h2>Logged in as:</h2>
+      <pre>{JSON.stringify(session, null, 2)}</pre>
       <form>
          <input type="password" name="key"  ref={inputRef} required/>
          <input type="file" name="file" ref={fileRef}required/>
@@ -33,7 +40,8 @@ export default function Home() {
       <div className="progress">
       <progress className="progressBar" value={progress} max="100"/>
       <span> {progress}%</span>
-      </div>
+      </div></div>
+}
     </>
 )
 }
