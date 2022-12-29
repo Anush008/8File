@@ -1,15 +1,17 @@
 import NextAuth from "next-auth"
 import EmailProvider from "next-auth/providers/email"
-import { TypeORMLegacyAdapter } from "@next-auth/typeorm-legacy-adapter"
+import { TypeORMLegacyAdapter } from "@next-auth/typeorm-legacy-adapter";
 
 export const authOptions = {
+  session: {strategy: "database",
+  maxAge: 30 * 24 * 60 * 60,},
   adapter: TypeORMLegacyAdapter({
     type: "mysql",
     host: "127.0.0.1",
     port: 3306,
     username: "anush",
     password: "anush",
-    database: "test",
+    database: "upfile",
     synchronize: true,
   }),
   
