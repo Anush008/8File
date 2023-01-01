@@ -1,6 +1,18 @@
-import Script from 'next/script';
+
+import { useEffect } from "react";
+import { signIn, useSession } from "next-auth/react";
+import {useRouter} from "next/router";
+
 
 const FileUploader = () => {
+  const { status } = useSession();
+  const router = useRouter();
+  //Redirect to homepage if not authenticated
+  useEffect(() => {
+    if (status !== "authenticated") {
+      router.push("/");
+    }
+  }, [status]);
   /*
   const fileTempl = document.getElementById("file-template"),
   imageTempl = document.getElementById("image-template"),
@@ -120,9 +132,9 @@ document.getElementById("cancel").onclick = () => {
 };
   */
 return(<>
-<div class="bg-gray-500 h-screen w-screen sm:px-8 md:px-16 sm:py-8">
+<div class="h-screen w-screen sm:px-8 md:px-16 sm:py-8">
       <main class="container mx-auto max-w-screen-lg h-full">
-        <article aria-label="File Upload Modal" class="relative h-full flex flex-col bg-white shadow-xl rounded-md" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" ondragleave="dragLeaveHandler(event);" ondragenter="dragEnterHandler(event);">
+        <article aria-label="File Upload Modal" class="relative h-full flex flex-col bg-white shadow-xl rounded-md border-2" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" ondragleave="dragLeaveHandler(event);" ondragenter="dragEnterHandler(event);">
 
           <div id="overlay" class="w-full h-full absolute top-0 left-0 pointer-events-none z-50 flex flex-col items-center justify-center rounded-md">
             <i>
@@ -168,7 +180,7 @@ return(<>
     </div>
     <template id="file-template">
       <li class="block p-1 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-1/8 h-24">
-        <article tabindex="0" class="group w-full h-full rounded-md focus:outline-none focus:shadow-outline elative bg-gray-100 cursor-pointer relative shadow-sm">
+        <article tabIndex="0" class="group w-full h-full rounded-md focus:outline-none focus:shadow-outline elative bg-gray-100 cursor-pointer relative shadow-sm">
           <img alt="upload preview" class="img-preview hidden w-full h-full sticky object-cover rounded-md bg-fixed" />
 
           <section class="flex flex-col rounded-md text-xs break-words w-full h-full z-20 absolute top-0 py-2 px-3">
@@ -195,7 +207,7 @@ return(<>
 
     <template id="image-template">
       <li class="block p-1 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-1/8 h-24">
-        <article tabindex="0" class="group hasImage w-full h-full rounded-md focus:outline-none focus:shadow-outline bg-gray-100 cursor-pointer relative text-transparent hover:text-white shadow-sm">
+        <article tabIndex="0" class="group hasImage w-full h-full rounded-md focus:outline-none focus:shadow-outline bg-gray-100 cursor-pointer relative text-transparent hover:text-white shadow-sm">
           <img alt="upload preview" class="img-preview w-full h-full sticky object-cover rounded-md bg-fixed" />
 
           <section class="flex flex-col rounded-md text-xs break-words w-full h-full z-20 absolute top-0 py-2 px-3">
