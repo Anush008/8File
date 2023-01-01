@@ -1,15 +1,16 @@
 import Hero from "../components/Hero";
+import Stats from "../components/Stats";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Pricing from "../components/Pricing";
+
 export default function Home() {
   
         return (
             <>
-            
                 <Navbar />
-    
-<Footer />
-            </>
+                <Hero />
+                <Stats />
+                <Footer />
+                </>
         )
       }
