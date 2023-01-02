@@ -30,7 +30,16 @@ const handleSubmit = async (e) => {
   const formData  = new FormData();
   for (const name in data) formData.append(name, data[name]);
     const response = await axios.post(url, formData, {onUploadProgress: (event) => setProgress(Math.round((event.loaded * 100) / event.total))}).catch((thrown) => {console.log(thrown.message);});
-  return response.status == 204 ? alert(fileId) : alert("Error");
+  if(response.status == 204) {<div className="modal">
+  <div className="modal-box">
+    <h3 className="font-bold text-lg">Congratulations random Internet user!</h3>
+    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+    <div className="modal-action">
+      <label htmlFor="my-modal" className="btn">Yay!</label>
+    </div>
+  </div>
+</div>} 
+  else alert("Error");
 }
 
 return(<>
