@@ -51,7 +51,7 @@ return(<>
           type="text"
           name="encryptionKey"
           id="encryptionKey"
-          placeholder="Ȧ̶̺_̸͍͠Ș̸̚U̴͖̾P̴̛͇Ĕ̵̦R̶͕͋_̶̭͂S̴̱̈́T̶̻͐R̶̗͊Ō̵͖N̴͝ͅG̵̮̈́_̷̡̄Ḱ̶̳Ȇ̵͇Y̶̭͋"
+          placeholder="Y̷̞͌O̸͝ͅU̵̗͗R̸̦͗ ̷̜̄Ṡ̵̫Ū̸̪P̸̖̕É̷͇R̸̤͂ ̵̅ͅS̶̿͜T̵̘̀R̸̢̋O̷͕̾N̶̘̋G̴̫̽ ̵̫͂Ǩ̵̬È̴͇Y̸̠͗"
           class="w-full rounded-md border-2 border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-slate-800 focus:shadow-md"
           required
         />
