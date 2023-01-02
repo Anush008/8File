@@ -8,7 +8,7 @@ const Footer = () => {
           </svg>
           <span class="ml-3 text-xl">8File</span>
         </a>
-        <p class="mt-2 text-sm text-gray-500">Modi ji. Bass keejiye ab.</p>
+        <p class="mt-2 text-sm text-gray-500">Modi ji, bass keejiye ab.</p>
       </div>
       <div class="justify-end flex-grow flex justify-endflex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
         
@@ -23,9 +23,6 @@ const Footer = () => {
             </li>
             <li>
               <a class="text-gray-600 hover:text-gray-800">Teesra Link</a>
-            </li>
-            <li>
-              <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>
             </li>
           </nav>
         </div>
