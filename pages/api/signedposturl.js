@@ -8,7 +8,7 @@ import execute from '../../utils/MySQL';
 export default async function handler(req, res) {
   const PASSPHRASE = req.query.key;
   const FILE_NAME = req.query.name;
-  const FILE_ID = crypto.randomBytes(2).toString("hex");
+  const FILE_ID = crypto.randomBytes(3).toString("hex");
   const KEY = FILE_ID + "-" + FILE_NAME;
   const FILE_SIZE = req.query.size;
   await s3.createPresignedPost({

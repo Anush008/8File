@@ -30,9 +30,9 @@ export default function Home() {
     {status === "loading" && <p>Loading...</p>}
     {status === "unauthenticated" && <Link href='/api/auth/signin'>Login!</Link>}
     {status === "authenticated" && <div>
-      <h2>Logged in as:</h2>
-      <pre>{JSON.stringify(session, null, 2)}</pre>
-      <button onClick={() => signOut({redirect: false})}>Sign out</button>
+      {/* <h2>Logged in as:</h2>
+      <pre>{JSON.stringify(session, null, 2)}</pre> */}
+      <button class="btn btn-outline btn-error" onClick={() => signOut({redirect: false})}>Sign out</button>
       <form>
          <input type="password" name="key"  ref={inputRef} required/>
          <input type="file" name="file" ref={fileRef}required/>
