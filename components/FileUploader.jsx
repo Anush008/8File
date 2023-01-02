@@ -10,7 +10,6 @@ const FileUploader = () => {
   const [fileName, setFileName] = useState("");
   const [progress, setProgress] = useState(0);
   const fileInput = useRef(null);
-  const [showModal, setShowModal] = useState(false);
   //Redirect to homepage if not authenticated
   useEffect(() => {
     if (status !== "authenticated") {
@@ -31,7 +30,7 @@ const handleSubmit = async (e) => {
   const formData  = new FormData();
   for (const name in data) formData.append(name, data[name]);
     const response = await axios.post(url, formData, {onUploadProgress: (event) => setProgress(Math.round((event.loaded * 100) / event.total))}).catch((thrown) => {console.log(thrown.message);});
-  if(response.status == 204) {setShowModal(true);} 
+  if(response.status == 204) {alert("File is available at https://locahost" + fileId);} 
   else alert("Error");
 }
 
