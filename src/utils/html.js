@@ -1,12 +1,4 @@
-/**
- * Email HTML body
- * Insert invisible space into domains from being turned into a hyperlink by email
- * clients like Outlook and Apple mail, as this is confusing because it seems
- * like they are supposed to click on it to sign in.
- *
- * @note We don't add the email address to avoid needing to escape it, if you do, remember to sanitize it!
- */
- function html(params) {
+function html(params) {
     const { url, host, theme } = params
   
     const escapedHost = host.replace(/\./g, "&#8203;.")
