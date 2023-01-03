@@ -29,15 +29,15 @@ const handleSubmit = async (e) => {
   for (const name in data) formData.append(name, data[name]);
     const response = await axios.post(url, formData, {onUploadProgress: (event) => setProgress(Math.round((event.loaded * 100) / event.total))}).catch((thrown) => {console.log(thrown.message);});
   if(response.status == 204) {
-    alert("File is available at: " + "http://localhost:3000/" + fileId);
     setProgress(0);
+    alert("File is available at: " + "http://localhost:3000/" + fileId);
 } 
   else alert("Error");
 }
 
 return(<>
-<div class="flex items-center pb-12 justify-center p-12 bg-base-200">
-  <div class="mx-auto w-full max-w-[550px] bg-white shadow-xl border-2 rounded-lg">
+<div class="flex items-center pb-12 justify-center p-12 bg-base-200 mb-11">
+  <div class="mx-auto w-full max-w-[550px] bg-white shadow-xl border-2 rounded-xl">
     <form
       class="py-6 px-9"
       onSubmit={handleSubmit}
@@ -70,11 +70,9 @@ return(<>
           >
             <div>
               <span class="mb-2 block text-xl font-semibold text-[#07074D]">
-                Drop files here
+                {!!fileName ? "Choose another file" : "Select a file to upload" }
               </span>
-              <span class="mb-2 block text-base font-medium text-[#6B7280]">
-                Or
-              </span>
+              {/*<span class="mb-2 block text-base font-medium text-[#6B7280]">Or</span>*/}
               <span
                 class="hover:bg-slate-800 hover:text-white active:bg-slate-600 inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]"
               >
@@ -119,7 +117,7 @@ return(<>
         </div>}
       </div>
 
-      <div><button class={`w-full ${!!progress ? "text-rose-600" : "text-slate-600"} border ${!!progress ? "border-rose-600" : "border-slate-600"} ${!!progress ? "hover:bg-rose-600" : "hover:bg-slate-800"} hover:text-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150`}>{!!progress ? "Cancel" : "Send File"}</button></div>
+      <div><button class={`${!!progress ? "w-full btn btn-outline btn-error text-lg hover:text-white" : "w-full text-slate-600 border border-slate-600 hover:bg-slate-800 hover:text-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"}`}>{!!progress ? "Abort" : "Send File"}</button></div>
     </form>
   </div>
 </div>
