@@ -6,7 +6,7 @@ export default async function handler(req, res) {
         Key: "ef8cdf89-adfe-4b83-85eb-0a5497c1a7cd",
         Expires: 500000,
         SSECustomerAlgorithm: 'AES256',
-      //only this key is needed
+      
       }))
       var options = {
         host: url.hostname,

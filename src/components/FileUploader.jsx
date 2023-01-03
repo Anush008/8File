@@ -3,7 +3,6 @@ import { signIn, useSession } from "next-auth/react";
 import {useRouter} from "next/router";
 import axios from "axios";
 
-
 const FileUploader = () => {
   const { status } = useSession();
   const router = useRouter();
@@ -50,7 +49,7 @@ return(<>
           type="text"
           name="encryptionKey"
           id="encryptionKey"
-          placeholder="Y̷̞͌O̸͝ͅU̵̗͗R̸̦͗ ̷̜̄Ṡ̵̫Ū̸̪P̸̖̕É̷͇R̸̤͂ ̵̅ͅS̶̿͜T̵̘̀R̸̢̋O̷͕̾N̶̘̋G̴̫̽ ̵̫͂Ǩ̵̬È̴͇Y̸̠͗"
+          placeholder="@NUSH2332"
           class="w-full rounded-md border-2 border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-slate-800 focus:shadow-md"
           required
         />
