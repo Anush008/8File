@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { signOut, useSession, signIn } from "next-auth/react"
 import LogoSVG from '../components/LogoSVG';
-import Image from 'next/image';
 
 const Navbar = () => {
 const { data: session, status } = useSession();
@@ -18,7 +17,7 @@ return (<header class="text-gray-600 body-font">
     <Link href="/#faq" class="font-medium mr-5 hover:text-gray-900">FAQs</Link>
   </nav>
   <div class="flex items-center space-x-4">
-    {authenticated && <Image class="w-10 h-10 rounded-full" src={session?.user?.image || "/images/favicon.ico"} width="100" height="100" alt="User's profile picture"/>}
+    {authenticated && <img class="w-10 h-10 rounded-full" src={session?.user?.image || "/images/favicon.ico"} alt="User's profile picture"/>}
     <div class="font-medium ">
         <div>{authenticated ? (session.user.name || "Bruce Wayne") : <button class="btn" onClick={signIn}>Sign In</button>}</div>
         {authenticated && <div class="text-sm text-gray-500 ">Joined in August 2014</div>}
