@@ -1,5 +1,5 @@
-import { useEffect, useState, useRef } from "react";
-import { signIn, useSession } from "next-auth/react";
+import { useEffect, useState,} from "react";
+import { useSession } from "next-auth/react";
 import {useRouter} from "next/router";
 import axios from "axios";
 
@@ -8,7 +8,6 @@ const FileUploader = () => {
   const router = useRouter();
   const [fileName, setFileName] = useState("");
   const [progress, setProgress] = useState(0);
-  const fileInput = useRef(null);
   //Redirect to homepage if not authenticated
   useEffect(() => {
     if (status !== "authenticated") {
@@ -20,7 +19,7 @@ const handleSubmit = async (e) => {
   e.preventDefault();
   const form = e.target.elements;
   const file = form.file.files[0];
-
+  setProgress(0);
   if(fileName === "") return alert("No file selected!");
 
   const encryptionKey = form.encryptionKey.value;
@@ -29,7 +28,10 @@ const handleSubmit = async (e) => {
   const formData  = new FormData();
   for (const name in data) formData.append(name, data[name]);
     const response = await axios.post(url, formData, {onUploadProgress: (event) => setProgress(Math.round((event.loaded * 100) / event.total))}).catch((thrown) => {console.log(thrown.message);});
-  if(response.status == 204) {alert("File is available at https://locahost" + fileId);} 
+  if(response.status == 204) {
+    alert("File is available at: " + "http://localhost:3000/" + fileId);
+    setProgress(0);
+} 
   else alert("Error");
 }
 
@@ -61,7 +63,7 @@ return(<>
         </label>
 
         <div class="mb-8">
-          <input type="file" name="file" id="file" class="sr-only" ref={fileInput} onChange={(e) => {setFileName(e.target.files[0].name);}}required />
+          <input type="file" name="file" id="file" class="sr-only" onChange={(e) => {setFileName(e.target.files[0].name);}}required />
           <label
             htmlFor="file"
             class="border-2 relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
@@ -86,7 +88,7 @@ return(<>
             <span class="truncate pr-3 text-base font-medium text-[#07074D]">
               {fileName}
             </span>
-            <button class="text-[#07074D]" onClick={()=> {setFileName(""); fileInput.current = null;}}>
+            <button class={`text-[#07074D] ${!!progress ? "invisible" : "visible"}`} onClick={()=> {setFileName("");}}>
               <svg
                 width="10"
                 height="10"
@@ -117,7 +119,7 @@ return(<>
         </div>}
       </div>
 
-      <div><button class="w-full text-slate-500 border border-slate-500 hover:bg-slate-800 hover:text-white active:bg-slate-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Send File</button></div>
+      <div><button class={`w-full ${!!progress ? "text-rose-600" : "text-slate-600"} border ${!!progress ? "border-rose-600" : "border-slate-600"} ${!!progress ? "hover:bg-rose-600" : "hover:bg-slate-800"} hover:text-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150`}>{!!progress ? "Cancel" : "Send File"}</button></div>
     </form>
   </div>
 </div>
