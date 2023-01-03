@@ -19,9 +19,9 @@ return (<header class="text-gray-600 body-font">
   </nav>
   <div class="flex items-center space-x-4">
     {authenticated && <Image class="w-10 h-10 rounded-full" src={session?.user?.image || "/images/favicon.ico"} width="100" height="100" alt="User's profile picture"/>}
-    <div class="font-medium dark:text-white">
+    <div class="font-medium ">
         <div>{authenticated ? (session.user.name || "Bruce Wayne") : <button class="btn" onClick={signIn}>Sign In</button>}</div>
-        {authenticated && <div class="text-sm text-gray-500 dark:text-gray-400">Joined in August 2014</div>}
+        {authenticated && <div class="text-sm text-gray-500 ">Joined in August 2014</div>}
     </div>
     {authenticated && <button class="btn btn-outline btn-error" onClick={() => {signOut({redirect: false})}}>Sign Out</button>}
 </div>

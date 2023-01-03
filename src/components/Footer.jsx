@@ -9,7 +9,7 @@ const Footer = () => {
           <LogoSVG/>
           <span class="text-xl">File</span>
         </a>
-        <p class="mt-2 text-sm text-gray-500">Modi ji, bass keejiye ab.</p>
+        <p class="mt-2 text-sm text-gray-500">Truly secure file sharing</p>
       </div>
       <div class="justify-end flex-grow flex justify-endflex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
         
