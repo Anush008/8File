@@ -1,11 +1,12 @@
 import mysql from 'mysql2';
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    database: 'test'
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    database: process.env.MYSQL_DATABASE_NAME,
+    password: process.env.MYSQL_PASSWORD,
   });
 
-//Promisify the execute function
+//Promisify the execute()
 const execute = async (query, params) => {
   return new Promise((resolve, reject) => {
     connection.execute(query, params, (err, results, fields) => {
