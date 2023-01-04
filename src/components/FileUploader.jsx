@@ -1,19 +1,16 @@
-import { useEffect, useState,} from "react";
+import { useState } from "react";
 import { useSession } from "next-auth/react";
 import {useRouter} from "next/router";
 import axios from "axios";
 
 const FileUploader = () => {
-  const { status } = useSession();
+  const { status } = useSession({required: true,
+  onUnauthenticated() {
+    router.push("/");
+  }});
   const router = useRouter();
   const [fileName, setFileName] = useState("");
   const [progress, setProgress] = useState(0);
-  //Redirect to homepage if not authenticated
-  useEffect(() => {
-    if (status !== "authenticated") {
-      router.push("/");
-    }
-  }, [status]);
 
 const handleSubmit = async (e) => {
   e.preventDefault();
