@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import {useRouter} from "next/router";
 import axios from "axios";
+import parseBytes from "../utils/fileSizeParser";
 
 const FileUploader = () => {
   const { status } = useSession({required: true,
@@ -11,6 +12,7 @@ const FileUploader = () => {
   const router = useRouter();
   const [fileName, setFileName] = useState("");
   const [progress, setProgress] = useState(0);
+  const [fileSize, setFileSize] = useState(0);
 
 const handleSubmit = async (e) => {
   e.preventDefault();
@@ -60,7 +62,7 @@ return(<>
         </label>
 
         <div class="mb-8">
-          <input type="file" name="file" id="file" class="sr-only" onChange={(e) => {setFileName(e.target.files[0].name);}}required />
+          <input type="file" name="file" id="file" class="sr-only" onChange={(e) => {setFileName(e.target.files[0].name); setFileSize(parseBytes(e.target.files[0].size))}}required />
           <label
             htmlFor="file"
             class="border-2 relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
@@ -81,7 +83,7 @@ return(<>
       {!!fileName && <div class="rounded-md bg-base-200 py-4 px-8">
           <div class="flex items-center justify-between">
             <span class="truncate pr-3 text-base font-medium text-[#07074D]">
-              {fileName}
+              {`${fileName}, ${fileSize}`}
             </span>
             <button class={`text-[#07074D] ${!!progress ? "invisible" : "visible"}`} onClick={()=> {setFileName("");}}>
               <svg

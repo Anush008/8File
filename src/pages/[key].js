@@ -61,7 +61,7 @@ const Post = ({S3KEY, NAME, SIZE}) => {
               <label class="border-2 relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center">
                 <div class="justify-center">
                   <FileIconSVG/>
-                  <span class="inline-flex py-2 text-xl truncate font-medium text-[#07074D] md:text-start text-center">
+                  <span class="inline-flex py-2 text-xl text-ellipsis font-medium text-[#07074D] md:text-start text-center">
                     {NAME}
                     <br/>
                     {parseBytes(SIZE)}
