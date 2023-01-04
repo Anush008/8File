@@ -20,7 +20,7 @@ export async function getServerSideProps(context) {
 const Post = ({S3KEY, NAME, SIZE}) => {
   const [progress, setProgress] = useState(0);
   const [isDownloading, setIsDownloading] = useState(false);
-  console.log(isDownloading)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target.elements;
@@ -34,7 +34,8 @@ const Post = ({S3KEY, NAME, SIZE}) => {
       headers,
       filename: NAME,
       onloadstart: () => {setIsDownloading(true);},
-      process: (event) => {if (!event.lengthComputable) return; setProgress(Math.round(event.loaded / event.total * 100));}
+      process: (event) => {if (!event.lengthComputable) return; setProgress(Math.round(event.loaded / event.total * 100));},
+      nativeFallbackOnError: true
     })
     .then(function () {
       alert("Downloaded!");
@@ -45,8 +46,7 @@ const Post = ({S3KEY, NAME, SIZE}) => {
       alert(error.message);
     });
   }
-  return (<>
-    <div class="flex items-center pb-12 justify-center p-12 bg-base-200 mb-11">
+  return (<div class="flex items-center pb-12 justify-center p-12 bg-base-200 mb-11">
       <div class="mx-auto w-full max-w-[550px] bg-white shadow-xl border-2 rounded-xl">
         <form
           class="py-6 px-9"
@@ -88,7 +88,6 @@ const Post = ({S3KEY, NAME, SIZE}) => {
         </form>
       </div>
     </div>
-    </>
   )
 }
 export default Post

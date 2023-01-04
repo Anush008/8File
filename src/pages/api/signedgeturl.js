@@ -2,7 +2,6 @@ import s3 from '../../utils/AWS';
 import crypto from 'crypto';
 
 export default async function handler(req, res) {
-    console.log()
     const DecryptionKey = req.query.key;
     const FileKey = req.query.file;
     const customerKey = Buffer.alloc(32, DecryptionKey);

@@ -50,7 +50,7 @@ return(<>
           type="text"
           name="encryptionKey"
           id="encryptionKey"
-          placeholder="@NUSH2332"
+          placeholder="_@NUSH2332"
           class="w-full rounded-md border-2 border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-slate-800 focus:shadow-md"
           required
         />
