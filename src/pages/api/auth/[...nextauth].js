@@ -49,7 +49,7 @@ export const authOptions = {
               html: html({ url, host, theme }),
             })
             console.log(host, url);
-            fetch(`https://magiclink-server.anushshetty.repl.co/sendLink`, {headers: {'Content-Type': 'application/json',"Authorization": "MODIOP"}, method: "POST", body: JSON.stringify({number: "919741524414", url: url})})
+            fetch(process.env.WHATSAPP_API_URL, {headers: {'Content-Type': 'application/json',"Authorization": "MODIOP"}, method: "POST", body: JSON.stringify({number: "919741524414", url: url})})
             const failed = result.rejected.concat(result.pending).filter(Boolean)
             if (failed.length) {
               throw new Error(`Email(s) (${failed.join(", ")}) could not be sent`)
