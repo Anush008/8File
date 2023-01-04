@@ -83,7 +83,7 @@ return(<>
       {!!fileName && <div class="rounded-md bg-base-200 py-4 px-8">
           <div class="flex items-center justify-between">
             <span class="truncate pr-3 text-base font-medium text-[#07074D]">
-              {`${fileName}, ${fileSize}`}
+              {`${fileName}, ${fileSize}.`}
             </span>
             <button class={`text-[#07074D] ${!!progress ? "invisible" : "visible"}`} onClick={()=> {setFileName("");}}>
               <svg
