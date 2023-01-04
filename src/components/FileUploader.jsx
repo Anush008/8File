@@ -1,126 +1,128 @@
 import { useState } from "react";
 import { useSession } from "next-auth/react";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 import axios from "axios";
 import parseBytes from "../utils/fileSizeParser";
 
 const FileUploader = () => {
-  const { status } = useSession({required: true,
-  onUnauthenticated() {
-    router.push("/");
-  }});
+  const { status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      router.push("/");
+    }
+  });
   const router = useRouter();
   const [fileName, setFileName] = useState("");
   const [progress, setProgress] = useState(0);
   const [fileSize, setFileSize] = useState(0);
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  const form = e.target.elements;
-  const file = form.file.files[0];
-  setProgress(0);
-  if(fileName === "") return alert("No file selected!");
-
-  const encryptionKey = form.encryptionKey.value;
-  const {url, fields, fileId} = await fetch(`/api/signedposturl?key=${encryptionKey}&name=${file.name}&size=${file.size}`).then(response => response.json());
-  const data = {...fields,file};
-  const formData  = new FormData();
-  for (const name in data) formData.append(name, data[name]);
-    const response = await axios.post(url, formData, {onUploadProgress: (event) => setProgress(Math.round((event.loaded * 100) / event.total))}).catch((thrown) => {console.log(thrown.message);});
-  if(response.status == 204) {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target.elements;
+    const file = form.file.files[0];
     setProgress(0);
-    alert("File is available at: " + "http://localhost:3000/" + fileId);
-} 
-  else alert("Error");
-}
+    if (fileName === "") return alert("No file selected!");
 
-return(<>
-<div class="flex items-center pb-12 justify-center p-12 bg-base-200 mb-11">
-  <div class="mx-auto w-full max-w-[550px] bg-white shadow-xl border-2 rounded-xl">
-    <form
-      class="py-6 px-9"
-      onSubmit={handleSubmit}
-    >
-      <div class="mb-5">
-        <label
-          htmlFor="encryptionKey"
-          class="mb-3 block text-base font-medium text-[#07074D]"
-        >Encryption Key</label>
-        <input
-          type="text"
-          name="encryptionKey"
-          id="encryptionKey"
-          placeholder="_@NUSH2332"
-          class="w-full rounded-md border-2 border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-slate-800 focus:shadow-md"
-          required
-        />
-      </div>
+    const encryptionKey = form.encryptionKey.value;
+    const { url, fields, fileId } = await fetch(`/api/signedposturl?key=${encryptionKey}&name=${file.name}&size=${file.size}`).then(response => response.json());
+    const data = { ...fields, file };
+    const formData = new FormData();
+    for (const name in data) formData.append(name, data[name]);
+    const response = await axios.post(url, formData, { onUploadProgress: (event) => setProgress(Math.round((event.loaded * 100) / event.total)) }).catch((thrown) => { console.log(thrown.message); });
+    if (response.status == 204) {
+      setProgress(0);
+      alert("File is available at: " + "http://localhost:3000/" + fileId);
+    }
+    else alert("Error");
+  }
 
-      <div class="mb-6 pt-2">
-        <label class="mb-5 block text-xl font-semibold text-[#07074D]">
-          Upload File
-        </label>
+  return (<>
+    <div class="flex items-center pb-12 justify-center p-12 bg-base-200 mb-11">
+      <div class="mx-auto w-full max-w-[550px] bg-white shadow-xl border-2 rounded-xl">
+        <form
+          class="py-6 px-9"
+          onSubmit={handleSubmit}
+        >
+          <div class="mb-5">
+            <label
+              htmlFor="encryptionKey"
+              class="mb-3 block text-base font-medium text-[#07074D]"
+            >Encryption Key</label>
+            <input
+              type="text"
+              name="encryptionKey"
+              id="encryptionKey"
+              placeholder="_@NUSH2332"
+              class="w-full rounded-md border-2 border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-slate-800 focus:shadow-md"
+              required
+            />
+          </div>
 
-        <div class="mb-8">
-          <input type="file" name="file" id="file" class="sr-only" onChange={(e) => {setFileName(e.target.files[0].name); setFileSize(parseBytes(e.target.files[0].size))}}required />
-          <label
-            htmlFor="file"
-            class="border-2 relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
-          >
-            <div>
-              <span class="mb-2 block text-xl font-semibold text-[#07074D]">
-                {!!fileName ? "Choose another file" : "Select a file to upload" }
-              </span>
-              {/*<span class="mb-2 block text-base font-medium text-[#6B7280]">Or</span>*/}
-              <span
-                class="hover:bg-slate-800 hover:text-white active:bg-slate-600 inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]"
+          <div class="mb-6 pt-2">
+            <label class="mb-5 block text-xl font-semibold text-[#07074D]">
+              Upload File
+            </label>
+
+            <div class="mb-8">
+              <input type="file" name="file" id="file" class="sr-only" onChange={(e) => { setFileName(e.target.files[0].name); setFileSize(parseBytes(e.target.files[0].size)) }} required />
+              <label
+                htmlFor="file"
+                class="border-2 relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
               >
-                Browse
-              </span>
+                <div>
+                  <span class="mb-2 block text-xl font-semibold text-[#07074D]">
+                    {!!fileName ? "Choose another file" : "Select a file to upload"}
+                  </span>
+                  {/*<span class="mb-2 block text-base font-medium text-[#6B7280]">Or</span>*/}
+                  <span
+                    class="hover:bg-slate-800 hover:text-white active:bg-slate-600 inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]"
+                  >
+                    Browse
+                  </span>
+                </div>
+              </label>
             </div>
-          </label>
-        </div>
-      {!!fileName && <div class="rounded-md bg-base-200 py-4 px-8">
-          <div class="flex items-center justify-between">
-            <span class="truncate pr-3 text-base font-medium text-[#07074D]">
-              {`${fileName}, ${fileSize}.`}
-            </span>
-            <button class={`text-[#07074D] ${!!progress ? "invisible" : "visible"}`} onClick={()=> {setFileName("");}}>
-              <svg
-                width="10"
-                height="10"
-                viewBox="0 0 10 10"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M0.279337 0.279338C0.651787 -0.0931121 1.25565 -0.0931121 1.6281 0.279338L9.72066 8.3719C10.0931 8.74435 10.0931 9.34821 9.72066 9.72066C9.34821 10.0931 8.74435 10.0931 8.3719 9.72066L0.279337 1.6281C-0.0931125 1.25565 -0.0931125 0.651788 0.279337 0.279338Z"
-                  fill="currentColor"
-                />
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M0.279337 9.72066C-0.0931125 9.34821 -0.0931125 8.74435 0.279337 8.3719L8.3719 0.279338C8.74435 -0.0931127 9.34821 -0.0931123 9.72066 0.279338C10.0931 0.651787 10.0931 1.25565 9.72066 1.6281L1.6281 9.72066C1.25565 10.0931 0.651787 10.0931 0.279337 9.72066Z"
-                  fill="currentColor"
-                />
-              </svg>
-            </button>
+            {!!fileName && <div class="rounded-md bg-base-200 py-4 px-8">
+              <div class="flex items-center justify-between">
+                <span class="truncate pr-3 text-base font-medium text-[#07074D]">
+                  {`${fileName}, ${fileSize}.`}
+                </span>
+                <button class={`text-[#07074D] ${!!progress ? "invisible" : "visible"}`} onClick={() => { setFileName(""); }}>
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 10 10"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M0.279337 0.279338C0.651787 -0.0931121 1.25565 -0.0931121 1.6281 0.279338L9.72066 8.3719C10.0931 8.74435 10.0931 9.34821 9.72066 9.72066C9.34821 10.0931 8.74435 10.0931 8.3719 9.72066L0.279337 1.6281C-0.0931125 1.25565 -0.0931125 0.651788 0.279337 0.279338Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M0.279337 9.72066C-0.0931125 9.34821 -0.0931125 8.74435 0.279337 8.3719L8.3719 0.279338C8.74435 -0.0931127 9.34821 -0.0931123 9.72066 0.279338C10.0931 0.651787 10.0931 1.25565 9.72066 1.6281L1.6281 9.72066C1.25565 10.0931 0.651787 10.0931 0.279337 9.72066Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="relative mt-5 h-[10px] w-full rounded-lg bg-[#E2E5EF]">
+                <progress value={progress} max="100"
+                  class="progress absolute left-0 right-0 h-full w-full"
+                ></progress>
+              </div>
+            </div>}
           </div>
-          <div class="relative mt-5 h-[10px] w-full rounded-lg bg-[#E2E5EF]">
-            <progress value={progress} max="100"
-              class="progress absolute left-0 right-0 h-full w-full"
-            ></progress>
-          </div>
-        </div>}
-      </div>
 
-      <div><button class={`${!!progress ? "w-full btn btn-outline btn-error text-lg hover:text-white" : "w-full text-slate-600 border border-slate-600 hover:bg-slate-800 hover:text-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"}`}>{!!progress ? "Abort" : "Send File"}</button></div>
-    </form>
-  </div>
-</div>
-</>)
+          <div><button class={`${!!progress ? "w-full btn btn-outline btn-error text-lg hover:text-white" : "w-full text-slate-600 border border-slate-600 hover:bg-slate-800 hover:text-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"}`}>{!!progress ? "Abort" : "Send File"}</button></div>
+        </form>
+      </div>
+    </div>
+  </>)
 }
 
 export default FileUploader;

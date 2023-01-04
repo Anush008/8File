@@ -1,18 +1,18 @@
 import LogoSVG from '../components/LogoSVG';
 
 const Footer = () => {
-  
-    return (<footer class="text-gray-600 body-font">
+
+  return (<footer class="text-gray-600 body-font">
     <div class="container px-5 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
       <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
         <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-          <LogoSVG/>
+          <LogoSVG />
           <span class="text-xl">File</span>
         </a>
         <p class="mt-2 text-sm text-gray-500">Truly secure file sharing</p>
       </div>
       <div class="justify-end flex-grow flex justify-endflex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
-        
+
         <div class="lg:w-1/4 md:w-1/2 w-full px-4">
           <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
           <nav class="list-none mb-10">
@@ -53,7 +53,7 @@ const Footer = () => {
         </p>
         <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
           <a class="text-gray-500">Hai🍖</a>
-          
+
         </span>
       </div>
     </div>
