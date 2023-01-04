@@ -1,6 +1,8 @@
-import { SessionProvider } from "next-auth/react"
-import '../styles/globals.css'
-import Head from 'next/head'
+import { SessionProvider } from "next-auth/react";
+import '../styles/globals.css';
+import Head from 'next/head';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
@@ -26,9 +28,11 @@ export default function App({
   <meta name="twitter:title" content="8File - Truly secure file sharing"/>
   <meta name="twitter:description" content="Securely transfer files to users with GZIP compression and server-side AES-256 encryption. Upto 10GB for FREE!"/>
   <meta name="twitter:image" content="https://i.ibb.co/fxjK3WT/snapshot.png"/>
-        
+  <link rel="shortcut icon" href="/images/favicon.ico" />
       </Head>
+      <Navbar />
       <Component {...pageProps} />
+      <Footer />
     </SessionProvider>
   )
 }
