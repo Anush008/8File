@@ -2,7 +2,7 @@ import s3 from '../../utils/AWS';
 
 export default async function handler(req, res) {
     var url = new URL(s3.getSignedUrl('getObject', {
-        Bucket: "witcherbucket21",
+        Bucket: process.env.AWS_BUCKET_NAME,
         Key: "ef8cdf89-adfe-4b83-85eb-0a5497c1a7cd",
         Expires: 500000,
         SSECustomerAlgorithm: 'AES256',

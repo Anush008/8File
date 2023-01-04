@@ -21,7 +21,7 @@ export default async function handler(req, res) {
       ["starts-with", "$X-Amz-Server-Side-Encryption-Customer-Key-MD5", ""]
     ],
     Expires: 3600,
-    Bucket: 'witcherbucket21'
+    Bucket: process.env.AWS_BUCKET_NAME,
   }, async(err, signed) => {
     if(err) res.end(err.message);
     const customerKey = Buffer.alloc(32, PASSPHRASE);
