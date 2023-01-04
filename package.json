@@ -12,7 +12,7 @@
     "@next-auth/typeorm-legacy-adapter": "^2.0.1",
     "aws-sdk": "^2.1274.0",
     "axios": "^1.2.1",
-    "daisyui": "^2.46.0",
+    "daisyui": "^2.46.1",
     "dotenv": "^16.0.3",
     "js-file-downloader": "^1.1.24",
     "mysql2": "^2.3.3",
