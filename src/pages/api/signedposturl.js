@@ -28,7 +28,7 @@ export default async function handler(req, res) {
     signed.fields["X-Amz-Server-Side-Encryption-Customer-Key"] = customerKey.toString('base64');
     signed.fields["X-Amz-Server-Side-Encryption-Customer-Key-MD5"] = md5;
     signed.fileId = FILE_ID;
+    await execute("INSERT INTO `files` (`ID`, `S3KEY`, `SIZE`, `NAME`) VALUES (?, ?, ?, ?)", [FILE_ID, KEY, FILE_SIZE, FILE_NAME]);
     res.status(200).json(signed);
-    execute("INSERT INTO `files` (`ID`, `S3KEY`, `SIZE`, `NAME`) VALUES (?, ?, ?, ?)", [FILE_ID, KEY, FILE_SIZE, FILE_NAME]);
   });
 }
