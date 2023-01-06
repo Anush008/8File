@@ -1,6 +1,4 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import dotenv from 'dotenv';
-dotenv.config();
 import crypto from 'crypto';
 import s3 from '../../utils/AWS';
 import execute from '../../utils/MySQL';

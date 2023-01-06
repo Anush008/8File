@@ -38,8 +38,8 @@ const Post = ({ S3KEY, NAME, SIZE }) => {
       nativeFallbackOnError: true
     })
       .then(function () {
-        alert("Downloaded!");
         setIsDownloading(false);
+        alert("Downloaded!");
       })
       .catch(function (error) {
         setIsDownloading(false);

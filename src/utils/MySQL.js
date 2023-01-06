@@ -7,6 +7,7 @@ const connection = mysql.createConnection({
   });
 
 //Promisify the execute()
+
 const execute = async (query, params) => {
   return new Promise((resolve, reject) => {
     connection.execute(query, params, (err, results, fields) => {
@@ -14,4 +15,5 @@ const execute = async (query, params) => {
       else resolve(results);
     });
 })}
+  
 export default execute;
