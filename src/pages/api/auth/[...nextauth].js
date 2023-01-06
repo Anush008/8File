@@ -7,9 +7,9 @@ import {createTransport} from "nodemailer";
 import GitHubProvider from "next-auth/providers/github";
 import DiscordProvider from "next-auth/providers/discord";
 import GoogleProvider from "next-auth/providers/google";
+import execute from "../../../utils/MySQL";
 
 export const authOptions = {
-  pages: {newUser: "/newuser"},
   adapter: TypeORMLegacyAdapter({
     type: "mysql",
     host: process.env.MYSQL_HOST,
@@ -18,6 +18,15 @@ export const authOptions = {
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE_NAME,
   }),
+  callbacks: {
+    async session({ session, token, user }) {
+      if(!session.user.storageLimitMB && session.user.email){
+        const results = await execute("SELECT * FROM `users_addtional` WHERE email=?", [session.user.email]);
+        session.user = {...session.user, ...results[0]};
+      }
+      return session;
+    }
+  },
   
   // Configure one or more authentication providers
   providers: [ GitHubProvider({

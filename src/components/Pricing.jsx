@@ -1,110 +1,137 @@
-const Pricing = () => {
-    return (<section class="bg-white dark:bg-gray-900">
-    <div class="container px-4 mx-auto max-w-screen-xl py-4">
+import DotSVG from "./DotSVG";
+import {useSession} from "next-auth/react";
+
+
+const Pricing = (props) => {
+    const {data: session, status} = useSession();
+    const paymentInfo = props.paymentInfo;
+    return (<section class="bg-white pb-4" id="pricing">
+    <div class="px-4 mx-auto max-w-screen-xl lg:py-4 lg:px-6">
         <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
-            <h2 class="text-5xl font-bold">Designed for business teams like yours</h2>
-            <p class="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
+            <h2 class="mb-2 text-4xl tracking-tight font-bold text-gray-900">Premium Pricing</h2>
+            <p class="font-normal text-gray-500 sm:text-xl">Get more storage and features at prices that seem too good to be true.</p>
         </div>
-        <div id="pricing"  class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
-            <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
-                <h3 class="mb-4 text-2xl font-semibold">Starter</h3>
-                <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">Best option for personal use and for your next project.</p>
-                <div class="flex justify-center items-baseline my-8">
-                    <span class="mr-2 text-5xl font-extrabold">$29</span>
-                    <span class="text-gray-500 dark:text-gray-400">/month</span>
+        <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
+            <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border-gray-100 shadow border-2">
+                <h3 class="mb-4 text-2xl font-semibold">Basic</h3>
+                <p class="font-normal text-gray-500 sm:text-lg">For individuals and regular use cases without dedicated support</p>
+                <div class="flex justify-center items-baseline my-4">
+                    <span class="mr-2 text-5xl font-bold">FREE</span>
+                    <span class="text-gray-500 ">forever</span>
                 </div>
+                
                 <ul role="list" class="mb-8 space-y-4 text-left">
-                    <li class="flex items-center space-x-3">
-                        <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        <span>Individual configuration</span>
+                    <li class="flex items-center space-x-2">
+                       
+                        <DotSVG />
+                        <span>AES-256 Encryption</span>
                     </li>
-                    <li class="flex items-center space-x-3">
-                        <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        <span>No setup, or hidden fees</span>
+                    <li class="flex items-center space-x-2">
+                       
+                        <DotSVG />
+                        <span>Unmetered Bandwidth</span>
                     </li>
-                    <li class="flex items-center space-x-3">
-                        <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        <span>Team size: <span class="font-semibold">1 developer</span></span>
+                    <li class="flex items-center space-x-2">
+                       
+                        <DotSVG />
+                        <span>Storage: <span class="font-semibold">10 GB</span></span>
                     </li>
-                    <li class="flex items-center space-x-3">
-                        <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        <span>Premium support: <span class="font-semibold">6 months</span></span>
+                    <li class="flex items-center space-x-2">
+                       
+                        <DotSVG />
+                        <span>Technical assistance: <span class="font-semibold">NO</span></span>
                     </li>
-                    <li class="flex items-center space-x-3">
-                        <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        <span>Free updates: <span class="font-semibold">6 months</span></span>
+                    <li class="flex items-center space-x-2">
+                       
+                        <DotSVG />
+                        <span>API Access: <span class="font-semibold">NO</span></span>
                     </li>
                 </ul>
-                <a href="#" class="text-slate-500 border border-slate-500 hover:bg-slate-800 hover:text-white active:bg-slate-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Get started</a>
+                <a class={`w-full bg-gray-200 text-slate-500 border font-bold uppercase px-8 py-3 rounded outline-none mr-1 mb-1 `}>{ (status === "authenticated" && session.user.premium) ? "YOU'VE UPGRADED" : "CURRENT PLAN"}</a>
             </div>
-            <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
-                <h3 class="mb-4 text-2xl font-semibold">Company</h3>
-                <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">Relevant for multiple users, extended and premium support.</p>
-                <div class="flex justify-center items-baseline my-8">
-                    <span class="mr-2 text-5xl font-extrabold">$99</span>
-                    <span class="text-gray-500 dark:text-gray-400 dark:text-gray-400">/month</span>
+            
+            <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border-2 border-gray-100 shadow ">
+                <form action={process.env.NEXT_PUBLIC_PAYU_CHECKOUT_ENDPOINT} method='post'>
+                <input type="hidden" name="key" value={paymentInfo?.key} />
+                <input type="hidden" name="txnid" value={paymentInfo?.txnId} />
+                <input type="hidden" name="productinfo" value={paymentInfo?.productinfo} />
+                <input type="hidden" name="amount" value={paymentInfo?.amount} />
+                <input type="hidden" name="email" value={paymentInfo?.email} />
+                <input type="hidden" name="firstname" value={paymentInfo?.fname} />
+                <input type="hidden" name="surl" value={paymentInfo?.surl} />
+                <input type="hidden" name="furl" value={paymentInfo?.furl} />
+                <input type="hidden" name="hash" value={paymentInfo?.hash} />
+                <h3 class="mb-4 text-2xl font-semibold">Premium</h3>
+                <p class="font-normal text-gray-500 sm:text-lg">For teams, executives and professionals with dedicated support</p>
+                <div class="flex justify-center items-baseline my-4">
+                    <span class="mr-2 text-5xl font-bold">₹99</span>
+                    <span class="text-gray-500">/month</span>
                 </div>
+                
                 <ul role="list" class="mb-8 space-y-4 text-left">
-                    <li class="flex items-center space-x-3">
-                        <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        <span>Individual configuration</span>
+                    <li class="flex items-center space-x-2">
+                       <DotSVG/>
+                        <span>AES-256 Encryption & GZIP Compression</span>
                     </li>
-                    <li class="flex items-center space-x-3">
-                        <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        <span>No setup, or hidden fees</span>
+                    <li class="flex items-center space-x-2">
+                       
+                        <DotSVG />
+                        <span>Unmetered Bandwidth</span>
                     </li>
-                    <li class="flex items-center space-x-3">
-                        <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        <span>Team size: <span class="font-semibold">10 developers</span></span>
+                    <li class="flex items-center space-x-2">
+                       
+                        <DotSVG />
+                        <span>Storage: <span class="font-semibold">100 GB</span></span>
                     </li>
-                    <li class="flex items-center space-x-3">
-                     
-                        <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        <span>Premium support: <span class="font-semibold">24 months</span></span>
+                    <li class="flex items-center space-x-2">
+                       
+                        <DotSVG />
+                        <span>Technical assistance: <span class="font-semibold">YES</span></span>
                     </li>
-                    <li class="flex items-center space-x-3">
-                        
-                        <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        <span>Free updates: <span class="font-semibold">24 months</span></span>
+                    <li class="flex items-center space-x-2">
+                       
+                        <DotSVG />
+                        <span>API Access: <span class="font-semibold">NO</span></span>
                     </li>
                 </ul>
-                <a href="#" class="text-slate-500 border border-slate-500 hover:bg-slate-800 hover:text-white active:bg-slate-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Get started</a>
-            </div>
-            <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+                {status == "authenticated" && <button className="w-full text-slate-500 border border-slate-500 hover:bg-slate-800 hover:text-white active:bg-slate-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="submit">UPGRADE &#8594;</button>}
+                </form>
+                {status == "unauthenticated" && <a href="/api/auth/signin"><button className="w-full text-slate-500 border border-slate-500 hover:bg-slate-800 hover:text-white active:bg-slate-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">UPGRADE &#8594;</button></a>}</div>
+            <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border-2 border-gray-100 shadow">
                 <h3 class="mb-4 text-2xl font-semibold">Enterprise</h3>
-                <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">Best for large scale uses and extended redistribution rights.</p>
-                <div class="flex justify-center items-baseline my-8">
-                    <span class="mr-2 text-5xl font-extrabold">$499</span>
-                    <span class="text-gray-500 dark:text-gray-400">/month</span>
+                <p class="font-normal text-gray-500 sm:text-lg">For companies and enterprises looking for storage solution at scale</p>
+                <div class="flex justify-center items-baseline my-4">
+                    <span class="mr-2 text-5xl font-bold">Custom</span>
                 </div>
+                
                 <ul role="list" class="mb-8 space-y-4 text-left">
-                    <li class="flex items-center space-x-3">
-                        
-                        <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        <span>Individual configuration</span>
+                    <li class="flex items-center space-x-2">
+                       
+                        <DotSVG />
+                        <span>AES-256 Encryption & GZIP Compression</span>
                     </li>
-                    <li class="flex items-center space-x-3">
-                        
-                        <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        <span>No setup, or hidden fees</span>
+                    <li class="flex items-center space-x-2">
+                       
+                        <DotSVG />
+                        <span>Unmetered Bandwidth</span>
                     </li>
-                    <li class="flex items-center space-x-3">
-                        
-                        <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        <span>Team size: <span class="font-semibold">100+ developers</span></span>
+                    <li class="flex items-center space-x-2">
+                       
+                        <DotSVG />
+                        <span>Storage: <span class="font-semibold">Upto 10 TB</span></span>
                     </li>
-                    <li class="flex items-center space-x-3">
-                        
-                        <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        <span>Premium support: <span class="font-semibold">36 months</span></span>
+                    <li class="flex items-center space-x-2">
+                       
+                        <DotSVG />
+                        <span>Technical assistance: <span class="font-semibold">YES</span></span>
                     </li>
-                    <li class="flex items-center space-x-3">
-                        
-                        <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        <span>Free updates: <span class="font-semibold">36 months</span></span>
+                    <li class="flex items-center space-x-2">
+                       
+                        <DotSVG />
+                        <span>API Access: <span class="font-semibold">YES</span></span>
                     </li>
                 </ul>
-                <a href="#" class="text-slate-500 border border-slate-500 hover:bg-slate-800 hover:text-white active:bg-slate-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Get started</a>
+                <a href="/contact" class="w-full text-slate-500 border border-slate-500 hover:bg-slate-800 hover:text-white active:bg-slate-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Contact Us &#8599;</a>
             </div>
         </div>
     </div>
