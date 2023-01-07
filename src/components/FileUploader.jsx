@@ -1,20 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import parseBytes from "../utils/fileSizeParser";
-
+import UploadComplete from "./UploadComplete";
 const FileUploader = () => {
-  const { status } = useSession({
+  const router = useRouter();
+  const { data: session ,status } = useSession({
     required: true,
     onUnauthenticated() {
       router.push("/");
     }
   });
-  const router = useRouter();
+  useEffect(() => {}, []);
   const [fileName, setFileName] = useState("");
   const [progress, setProgress] = useState(0);
   const [fileSize, setFileSize] = useState(0);
+  const [fileUrl, setFileUrl] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,22 +25,26 @@ const FileUploader = () => {
     const file = form.file.files[0];
     setProgress(0);
     if (fileName === "") return alert("No file selected!");
-
+    setProgress(1);
     const encryptionKey = form.encryptionKey.value;
-    const { url, fields, fileId } = await fetch(`/api/signedposturl?key=${encryptionKey}&name=${file.name}&size=${file.size}`).then(response => response.json());
+    const { url, fields, fileId } = await fetch(`/api/signedposturl?key=${encryptionKey}&name=${file.name}&size=${file.size}&uploaderId=${session.user.id}`).then(response => response.json());
     const data = { ...fields, file };
     const formData = new FormData();
     for (const name in data) formData.append(name, data[name]);
     const response = await axios.post(url, formData, { onUploadProgress: (event) => setProgress(Math.round((event.loaded * 100) / event.total)) }).catch((thrown) => { console.log(thrown.message); });
     if (response.status == 204) {
       setProgress(0);
-      alert("File is available at: " + "http://localhost:3000/" + fileId);
+      const url = window.location.protocol + "//" +window.location.host + "/" + fileId;
+      setFileUrl(url);
+      setShowModal(true);
     }
     else alert("Error");
   }
 
   return (<>
-    <div class="flex items-center pb-12 justify-center p-12 bg-base-200 mb-11">
+    <div class="flex items-center pb-12 justify-center p-12 bg-slate-100 mb-11">
+      <UploadComplete id="complete" url={fileUrl} show={showModal} setShow={setShowModal}/>
+  
       <div class="mx-auto w-full max-w-[550px] bg-white shadow-xl border-2 rounded-xl">
         <form
           class="py-6 px-9"
@@ -82,7 +89,7 @@ const FileUploader = () => {
                 </div>
               </label>
             </div>
-            {!!fileName && <div class="rounded-md bg-base-200 py-4 px-8">
+            {!!fileName && <div class="rounded-md bg-slate-100 py-4 px-8">
               <div class="flex items-center justify-between">
                 <span class="truncate pr-3 text-base font-medium text-[#07074D]">
                   {`${fileName}, ${fileSize}.`}
@@ -118,7 +125,7 @@ const FileUploader = () => {
             </div>}
           </div>
 
-          <div><button class={`${!!progress ? "w-full btn btn-outline btn-error text-lg hover:text-white" : "w-full text-slate-600 border border-slate-600 hover:bg-slate-800 hover:text-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"}`}>{!!progress ? "Abort" : "Send File"}</button></div>
+          <div><button class={`${!!progress ? "w-full btn btn-disabled text-lg hover:text-white disabled" : "w-full text-slate-600 border border-slate-600 hover:bg-slate-800 hover:text-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"}`}>{!!progress ? "UPLOADING..." : "Send File"}</button></div>
         </form>
       </div>
     </div>

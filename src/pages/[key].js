@@ -6,18 +6,20 @@ import { useState } from 'react';
 
 export async function getServerSideProps(context) {
   const { key } = context.query;
-  const result = await execute("SELECT S3KEY, NAME, SIZE FROM `files` WHERE `ID` = ?", [key]);
+  const result = await execute("SELECT S3KEY, NAME, SIZE, UPLOADEDON FROM `files` WHERE `ID` = ?", [key]);
+
   if (result.length === 0) {
     return {
       notFound: true,
     }
   }
+  result[0].UPLOADEDON = result[0].UPLOADEDON.toLocaleString();
   return {
     props: result[0]
   }
 }
 
-const Post = ({ S3KEY, NAME, SIZE }) => {
+const Post = ({ S3KEY, NAME, SIZE, UPLOADEDON }) => {
   const [progress, setProgress] = useState(0);
   const [isDownloading, setIsDownloading] = useState(false);
 
@@ -35,7 +37,8 @@ const Post = ({ S3KEY, NAME, SIZE }) => {
       filename: NAME,
       onloadstart: () => { setIsDownloading(true); },
       process: (event) => { if (!event.lengthComputable) return; setProgress(Math.round(event.loaded / event.total * 100)); },
-      nativeFallbackOnError: true
+      nativeFallbackOnError: true,
+      forceDesktopMode: true
     })
       .then(function () {
         setIsDownloading(false);
@@ -59,6 +62,7 @@ const Post = ({ S3KEY, NAME, SIZE }) => {
           </label>
           <div>
             <label class="border-2 relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center">
+          <div className="tooltip tooltip-top" data-tip={UPLOADEDON}>
               <div class="justify-center">
                 <FileIconSVG />
                 <span class="inline-flex py-2 text-xl text-ellipsis font-medium text-[#07074D] md:text-start text-center">
@@ -66,7 +70,7 @@ const Post = ({ S3KEY, NAME, SIZE }) => {
                   <br />
                   {parseBytes(SIZE)}
                 </span>
-              </div>
+              </div></div>
             </label>
           </div>
         </div>

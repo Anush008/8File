@@ -22,7 +22,7 @@ export const authOptions = {
     async session({ session, token, user }) {
       if(!session.user.storageLimitMB && session.user.email){
         const results = await execute("SELECT * FROM `users_addtional` WHERE email=?", [session.user.email]);
-        session.user = {...session.user, ...results[0]};
+        session.user = {...session.user, ...results[0], ...user};
       }
       return session;
     }

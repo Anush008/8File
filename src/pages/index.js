@@ -3,8 +3,19 @@ import Stats from "../components/Stats";
 import Updates from "../components/Updates";
 import Pricing from "../components/Pricing";
 import { authOptions } from '../pages/api/auth/[...nextauth]';
-import { unstable_getServerSession } from "next-auth/next"
+import { unstable_getServerSession } from "next-auth/next";
 import crypto from 'crypto';
+
+export default function Home({paymentInfo}) {
+  return (
+      <>
+          <Hero />
+          <Stats />
+          <Updates />
+          <Pricing paymentInfo={paymentInfo || {}}/>
+          </>
+  )
+}
 
 export async function getServerSideProps(context) {
   const session = await unstable_getServerSession(context.req, context.res, authOptions);
@@ -28,16 +39,7 @@ export async function getServerSideProps(context) {
       paymentInfo: {email, fname, key, txnId, amount, productinfo, surl, furl, hash}
     },
   }}
-  else return {}
+  else return {
+    props: {}
+  }
 }
-
-export default function Home({paymentInfo}) {
-        return (
-            <>
-                <Hero />
-                <Stats />
-                <Updates />
-                <Pricing paymentInfo={paymentInfo || {}}/>
-                </>
-        )
-      }

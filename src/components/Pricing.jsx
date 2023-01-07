@@ -1,7 +1,6 @@
 import DotSVG from "./DotSVG";
 import {useSession} from "next-auth/react";
 
-
 const Pricing = (props) => {
     const {data: session, status} = useSession();
     const paymentInfo = props.paymentInfo;
@@ -49,7 +48,6 @@ const Pricing = (props) => {
                 </ul>
                 <a class={`w-full bg-gray-200 text-slate-500 border font-bold uppercase px-8 py-3 rounded outline-none mr-1 mb-1 `}>{ (status === "authenticated" && session.user.premium) ? "YOU'VE UPGRADED" : "CURRENT PLAN"}</a>
             </div>
-            
             <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border-2 border-gray-100 shadow ">
                 <form action={process.env.NEXT_PUBLIC_PAYU_CHECKOUT_ENDPOINT} method='post'>
                 <input type="hidden" name="key" value={paymentInfo?.key} />
@@ -96,7 +94,8 @@ const Pricing = (props) => {
                 </ul>
                 {status == "authenticated" && <button className="w-full text-slate-500 border border-slate-500 hover:bg-slate-800 hover:text-white active:bg-slate-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="submit">UPGRADE &#8594;</button>}
                 </form>
-                {status == "unauthenticated" && <a href="/api/auth/signin"><button className="w-full text-slate-500 border border-slate-500 hover:bg-slate-800 hover:text-white active:bg-slate-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">UPGRADE &#8594;</button></a>}</div>
+                {status == "unauthenticated" && <a href="/api/auth/signin"><button className="w-full text-slate-500 border border-slate-500 hover:bg-slate-800 hover:text-white active:bg-slate-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">UPGRADE &#8594;</button></a>}
+                </div>
             <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border-2 border-gray-100 shadow">
                 <h3 class="mb-4 text-2xl font-semibold">Enterprise</h3>
                 <p class="font-normal text-gray-500 sm:text-lg">For companies and enterprises looking for storage solution at scale</p>

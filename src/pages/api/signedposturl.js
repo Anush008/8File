@@ -9,6 +9,7 @@ export default async function handler(req, res) {
   const FILE_ID = crypto.randomBytes(3).toString("hex");
   const KEY = FILE_ID + "-" + FILE_NAME;
   const FILE_SIZE = req.query.size;
+  const UPLOADER_ID = req.query.uploaderId;
   await s3.createPresignedPost({
     Fields: {
       key: KEY,
@@ -28,7 +29,7 @@ export default async function handler(req, res) {
     signed.fields["X-Amz-Server-Side-Encryption-Customer-Key"] = customerKey.toString('base64');
     signed.fields["X-Amz-Server-Side-Encryption-Customer-Key-MD5"] = md5;
     signed.fileId = FILE_ID;
-    await execute("INSERT INTO `files` (`ID`, `S3KEY`, `SIZE`, `NAME`) VALUES (?, ?, ?, ?)", [FILE_ID, KEY, FILE_SIZE, FILE_NAME]);
+    execute("INSERT INTO `files` (`ID`, `S3KEY`, `SIZE`, `NAME`, `UPLOADEDBY`) VALUES (?, ?, ?, ?, ?)", [FILE_ID, KEY, FILE_SIZE, FILE_NAME, UPLOADER_ID]).catch((e) => console.log(e.message));
     res.status(200).json(signed);
   });
 }
