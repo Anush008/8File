@@ -1,6 +1,7 @@
 //Reference: https://web.archive.org/web/20120507054320/http://codeaid.net/javascript/convert-size-in-bytes-to-human-readable-format-(javascript)
 
 function formatBytes(bytes, decimals = 2) {
+    bytes = parseInt(bytes);
     if (!+bytes) return '0 Bytes'
 
     const k = 1024
