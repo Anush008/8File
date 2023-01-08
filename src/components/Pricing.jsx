@@ -98,7 +98,7 @@ const Pricing = (props) => {
                 </div>
             <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border-2 border-gray-100 shadow">
                 <h3 class="mb-4 text-2xl font-semibold">Enterprise</h3>
-                <p class="font-normal text-gray-500 sm:text-lg">For companies and enterprises looking for storage solution at scale</p>
+                <p class="font-normal text-gray-500 sm:text-lg">For companies and enterprises looking for a storage solution at scale</p>
                 <div class="flex justify-center items-baseline my-4">
                     <span class="mr-2 text-5xl font-bold">Custom</span>
                 </div>
