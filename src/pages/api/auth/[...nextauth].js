@@ -21,14 +21,13 @@ export const authOptions = {
   callbacks: {
     async session({ session, token, user }) {
       if(!session.user.storageLimitMB && session.user.email){
-        const results = await execute("SELECT * FROM `users_addtional` WHERE email=?", [session.user.email]);
+        const results = await execute("SELECT * FROM `users_addtional` WHERE id=?", [user.id]);
         session.user = {...session.user, ...results[0], ...user};
       }
       return session;
     }
   },
   
-  // Configure one or more authentication providers
   providers: [ GitHubProvider({
     clientId: process.env.GITHUB_ID,
     clientSecret: process.env.GITHUB_SECRET
