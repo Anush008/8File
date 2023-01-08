@@ -14,7 +14,7 @@ const { data: session ,status } = useSession({
   }
 });
   return (<>
-  {!!results.length ? <div class="hero-content overflow-x-auto bg-slate-100 mb-10"><table class=" overflow-x-auto table w-full flex flex-col min-h-screen shadow-xl border-2 rounded-3xl">
+  {!!results.length ? <div class="hero-content overflow-x-auto bg-slate-100 mb-10 w-full"><table class=" overflow-x-auto table w-full flex flex-col min-h-screen shadow-xl border-2 rounded-3xl">
     <thead>
       <tr>
         <th>ID</th>
