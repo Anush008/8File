@@ -46,7 +46,7 @@ const { data: session ,status } = useSession({
       </tr>))}
     </tbody>
   </table>
-  </div> : <div class="flex flex-col items-center bg-slate-100 justify-center h-96 mb-5">
+  </div> : <div class="flex flex-col items-center bg-slate-100 justify-center h-96 w-full mb-5">
     <h1 class="text-4xl font-bold">No Files Found</h1>
     <h1 class="text-2xl font-bold">Upload a file to get started</h1>
     </div>}
