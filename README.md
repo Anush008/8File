@@ -1,4 +1,4 @@
-Available [8File.vercel.app](https://www.8file.ml/).
+Available at [8File.vercel.app](https://www.anush.gq/).
 
 
 
