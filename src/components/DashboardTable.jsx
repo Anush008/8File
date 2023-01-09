@@ -13,7 +13,7 @@ export default function DashboardTable({results}) {
     });
       return (<>
       {!!results.length ? <div className="hero min-h-screen bg-slate-100 mb-10">
-        <table class=" overflow-x-auto table w-full flex flex-col min-h-screen shadow-xl border-2 rounded-3xl">
+        <table class="bg-slate-100 overflow-x-auto table w-full flex flex-col min-h-screen shadow-xl border-2 rounded-3xl">
         <thead>
           <tr>
             <th>ID</th>
@@ -23,7 +23,7 @@ export default function DashboardTable({results}) {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="bg-slate-100">
           {results.map((result) => (<tr id={result?.ID}>
         <td>{result?.ID}</td>
             <td>

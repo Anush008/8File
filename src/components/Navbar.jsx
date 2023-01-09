@@ -20,7 +20,7 @@ const Navbar = () => {
         <Link href="/#faq" class="font-medium mr-5 hover:text-gray-900">FAQs</Link>
       </nav>
       <div class="flex items-center space-x-4">
-        {authenticated && <Image width="10" height="10" alt="User's avatar" class="w-10 h-10 rounded-full" src={session?.user?.image || "/images/favicon.ico"} />}
+        {authenticated && <Link href={session?.user?.image}><Image width="10" height="10" alt="User's avatar" class="w-10 h-10 rounded-full" src={session?.user?.image || "/images/favicon.ico"} /></Link>}
         <div class="font-medium ">
           <div>{authenticated ? (session.user.name || "Bruce Wayne") : <button class="btn" onClick={signIn}>Sign In</button>}</div>
           {authenticated && <div class="text-sm text-gray-500 ">{`Usage: ${formatBytes(session?.user?.storageUsed)} out of ${formatBytes(session?.user?.storageLimit)}`}</div>}
