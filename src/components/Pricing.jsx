@@ -1,4 +1,3 @@
-import DotSVG from "./DotSVG";
 import {useSession} from "next-auth/react";
 
 const Pricing = (props) => {
@@ -22,28 +21,28 @@ const Pricing = (props) => {
                 <ul role="list" class="mb-8 space-y-4 text-left">
                     <li class="flex items-center space-x-2">
                        
-                        <DotSVG />
-                        <span>AES-256 Encryption</span>
+                        •
+                        <span class="pl-2">AES-256 Encryption</span>
                     </li>
                     <li class="flex items-center space-x-2">
                        
-                        <DotSVG />
-                        <span>Unmetered Bandwidth</span>
+                        •
+                        <span class="pl-2">Unmetered Bandwidth</span>
                     </li>
                     <li class="flex items-center space-x-2">
                        
-                        <DotSVG />
-                        <span>Storage: <span class="font-semibold">10 GB</span></span>
+                        •
+                        <span class="pl-2">Storage: <span class="font-semibold">10 GB</span></span>
                     </li>
                     <li class="flex items-center space-x-2">
                        
-                        <DotSVG />
-                        <span>Technical assistance: <span class="font-semibold">NO</span></span>
+                        •
+                        <span class="pl-2">Technical assistance: <span class="font-semibold">NO</span></span>
                     </li>
                     <li class="flex items-center space-x-2">
                        
-                        <DotSVG />
-                        <span>API Access: <span class="font-semibold">NO</span></span>
+                        •
+                        <span class="pl-2">API Access: <span class="font-semibold">NO</span></span>
                     </li>
                 </ul>
                 <a class={`w-full bg-gray-200 text-slate-500 border font-bold uppercase px-8 py-3 rounded outline-none mr-1 mb-1 `}>{ (status === "authenticated" && session.user.premium) ? "YOU'VE UPGRADED" : "CURRENT PLAN"}</a>
@@ -68,28 +67,28 @@ const Pricing = (props) => {
                 
                 <ul role="list" class="mb-8 space-y-4 text-left">
                     <li class="flex items-center space-x-2">
-                       <DotSVG/>
-                        <span>AES-256 Encryption & GZIP Compression</span>
+                        •
+                        <span class="pl-2">AES-256 Encryption & GZIP Compression</span>
                     </li>
                     <li class="flex items-center space-x-2">
                        
-                        <DotSVG />
-                        <span>Unmetered Bandwidth</span>
+                        •
+                        <span class="pl-2">Unmetered Bandwidth</span>
                     </li>
                     <li class="flex items-center space-x-2">
                        
-                        <DotSVG />
-                        <span>Storage: <span class="font-semibold">100 GB</span></span>
+                        •
+                        <span class="pl-2">Storage: <span class="font-semibold">100 GB</span></span>
                     </li>
                     <li class="flex items-center space-x-2">
                        
-                        <DotSVG />
-                        <span>Technical assistance: <span class="font-semibold">YES</span></span>
+                        •
+                        <span class="pl-2">Technical assistance: <span class="font-semibold">YES</span></span>
                     </li>
                     <li class="flex items-center space-x-2">
                        
-                        <DotSVG />
-                        <span>API Access: <span class="font-semibold">NO</span></span>
+                        •
+                        <span class="pl-2">API Access: <span class="font-semibold">NO</span></span>
                     </li>
                 </ul>
                 {status == "authenticated" && <button className="w-full text-slate-500 border border-slate-500 hover:bg-slate-800 hover:text-white active:bg-slate-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="submit">UPGRADE &#8594;</button>}
@@ -106,28 +105,28 @@ const Pricing = (props) => {
                 <ul role="list" class="mb-8 space-y-4 text-left">
                     <li class="flex items-center space-x-2">
                        
-                        <DotSVG />
-                        <span>AES-256 Encryption & GZIP Compression</span>
+                        •
+                        <span class="pl-2">AES-256 Encryption & GZIP Compression</span>
                     </li>
                     <li class="flex items-center space-x-2">
                        
-                        <DotSVG />
-                        <span>Unmetered Bandwidth</span>
+                        •
+                        <span class="pl-2">Unmetered Bandwidth</span>
                     </li>
                     <li class="flex items-center space-x-2">
                        
-                        <DotSVG />
-                        <span>Storage: <span class="font-semibold">Upto 10 TB</span></span>
+                        •
+                        <span class="pl-2">Storage: <span class="font-semibold">Upto 10 TB</span></span>
                     </li>
                     <li class="flex items-center space-x-2">
                        
-                        <DotSVG />
-                        <span>Technical assistance: <span class="font-semibold">YES</span></span>
+                        •
+                        <span class="pl-2">Technical assistance: <span class="font-semibold">YES</span></span>
                     </li>
                     <li class="flex items-center space-x-2">
                        
-                        <DotSVG />
-                        <span>API Access: <span class="font-semibold">YES</span></span>
+                        •
+                        <span class="pl-2">API Access: <span class="font-semibold">YES</span></span>
                     </li>
                 </ul>
                 <a href="/contact" class="w-full text-slate-500 border border-slate-500 hover:bg-slate-800 hover:text-white active:bg-slate-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Contact Us &#8599;</a>
@@ -136,4 +135,4 @@ const Pricing = (props) => {
     </div>
   </section>)}
 
-    export default Pricing;
+export default Pricing;
