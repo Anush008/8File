@@ -88,7 +88,7 @@ const Post = ({ S3KEY, NAME, SIZE, UPLOADEDON }) => {
             required
           />
         </div>
-        <div><button class="w-full text-slate-600 border border-slate-600 hover:bg-slate-800 hover:text-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">{isDownloading ? `Downloading... ${progress}%` : "Download"}</button></div>
+        <div><button class={`${isDownloading ? "disabled" : ""} w-full text-slate-600 border border-slate-600 hover:bg-slate-800 hover:text-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150`}>{isDownloading ? `Downloading... ${progress}%` : "Download"}</button></div>
       </form>
     </div>
   </div>
