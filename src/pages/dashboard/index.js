@@ -15,7 +15,6 @@ const { data: session ,status } = useSession({
 });
   return (<>
   {!!results.length ? <div className="hero min-h-screen bg-slate-100 mb-10">
-  <div className="hero-content text-center">
     <table class=" overflow-x-auto table w-full flex flex-col min-h-screen shadow-xl border-2 rounded-3xl">
     <thead>
       <tr>
@@ -48,7 +47,7 @@ const { data: session ,status } = useSession({
       </tr>))}
     </tbody>
   </table>
-  </div></div> : <div class="hero min-h-screen bg-slate-100 mb-10">
+  </div></div>: <div class="hero min-h-screen bg-slate-100 mb-10">
   <div className="hero-content text-center">
     <h1 class="text-4xl font-bold">No Files Found</h1></div>
     </div>}
