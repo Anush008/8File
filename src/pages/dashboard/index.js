@@ -47,7 +47,7 @@ const { data: session ,status } = useSession({
       </tr>))}
     </tbody>
   </table>
-  </div></div>: <div class="hero min-h-screen bg-slate-100 mb-10">
+  </div> : <div class="hero min-h-screen bg-slate-100 mb-10">
   <div className="hero-content text-center">
     <h1 class="text-4xl font-bold">No Files Found</h1></div>
     </div>}
