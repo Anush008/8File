@@ -125,7 +125,7 @@ const FileUploader = () => {
             </div>}
           </div>
 
-          <div><button class={`${!!progress ? "w-full btn btn-disabled text-lg hover:text-white disabled" : "w-full text-slate-600 border border-slate-600 hover:bg-slate-800 hover:text-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"}`}>{!!progress ? "UPLOADING..." : "Send File"}</button></div>
+          <div><button class={`${!!progress ? "w-full btn btn-disabled text-lg hover:text-white disabled" : "w-full text-slate-600 border border-slate-600 hover:bg-slate-800 hover:text-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"}`}>{!!progress ? "UPLOADING..." : "UPLOAD"}</button></div>
         </form>
       </div>
     </div>
