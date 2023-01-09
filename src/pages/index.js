@@ -2,7 +2,7 @@ import Hero from "../components/Hero";
 import { authOptions } from '../pages/api/auth/[...nextauth]';
 import { unstable_getServerSession } from "next-auth/next";
 import crypto from 'crypto';
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
 
 const Pricing = dynamic(() => import("../components/Pricing"), {
   loading: () => 'Loading...',

@@ -1,4 +1,4 @@
-export default function({}){
+export default function(){
     return(<section class="text-gray-600 body-font">
     <div id= "stats" class="container px-5 py-10 mx-auto">
       <div class="flex flex-wrap -m-4 text-center">

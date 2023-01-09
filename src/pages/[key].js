@@ -41,6 +41,7 @@ const Post = ({ S3KEY, NAME, SIZE, UPLOADEDON }) => {
       forceDesktopMode: true
     })
       .then(function () {
+        fetch(`/api/downloaded?S3KEY=${S3KEY}`);
         setIsDownloading(false);
         alert("Downloaded!");
       })
