@@ -23,6 +23,8 @@ export const authOptions = {
       if(!session.user.storageLimitMB && session.user.email){
         const results = await execute("SELECT * FROM `users_addtional` WHERE id=?", [user.id]);
         session.user = {...session.user, ...results[0], ...user};
+        session.user.name ??= "Bruce Wayne";
+        session.user.image ??= "/images/favicon.ico";
       }
       return session;
     }
