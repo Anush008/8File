@@ -1,10 +1,18 @@
 import Hero from "../components/Hero";
-import Stats from "../components/Stats";
-import Updates from "../components/Updates";
-import Pricing from "../components/Pricing";
 import { authOptions } from '../pages/api/auth/[...nextauth]';
 import { unstable_getServerSession } from "next-auth/next";
 import crypto from 'crypto';
+import dynamic from 'next/dynamic'
+
+const Pricing = dynamic(() => import("../components/Pricing"), {
+  loading: () => 'Loading...',
+});
+const Stats = dynamic(() => import("../components/Stats"), {
+  loading: () => 'Loading...',
+});
+const Updates = dynamic(() => import("../components/Updates"), {
+  loading: () => 'Loading...',
+});
 
 export default function Home({paymentInfo}) {
   return (
