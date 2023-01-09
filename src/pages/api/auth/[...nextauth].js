@@ -32,7 +32,8 @@ export const authOptions = {
   
   providers: [ GitHubProvider({
     clientId: process.env.GITHUB_ID,
-    clientSecret: process.env.GITHUB_SECRET
+    clientSecret: process.env.GITHUB_SECRET,
+    allowDangerousEmailAccountLinking: true
   }),
   GoogleProvider({
     clientId: process.env.GOOGLE_CLIENT_ID,
@@ -41,7 +42,8 @@ export const authOptions = {
   }),
   DiscordProvider({
     clientId: process.env.DISCORD_CLIENT_ID,
-    clientSecret: process.env.DISCORD_CLIENT_SECRET
+    clientSecret: process.env.DISCORD_CLIENT_SECRET,
+    allowDangerousEmailAccountLinking: true
   }),
         EmailProvider({
           server: process.env.EMAIL_SERVER,
