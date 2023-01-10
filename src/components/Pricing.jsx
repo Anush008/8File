@@ -3,7 +3,7 @@ import {useSession} from "next-auth/react";
 const Pricing = (props) => {
     const {data: session, status} = useSession();
     const paymentInfo = props.paymentInfo;
-    return (<section class="bg-white pb-4" id="pricing">
+    return (<section class="bg-white pb-4 pt-2" id="pricing">
     <div class="px-4 mx-auto max-w-screen-xl lg:py-4 lg:px-6">
         <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
             <h2 class="mb-2 text-4xl tracking-tight font-bold text-gray-900">Premium Pricing</h2>
@@ -48,7 +48,7 @@ const Pricing = (props) => {
                 <a class={`w-full bg-gray-200 text-slate-500 border font-bold uppercase px-8 py-3 rounded outline-none mr-1 mb-1 `}>{ (status === "authenticated" && session.user.premium) ? "YOU'VE UPGRADED" : "CURRENT PLAN"}</a>
             </div>
             <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border-2 border-gray-100 shadow ">
-                <form action={process.env.NEXT_PUBLIC_PAYU_CHECKOUT_ENDPOINT} method='post'>
+                <form action={process.env.NEXT_PUBLIC_PAYU_CHECKOUT_ENDPOINT} method='POST'>
                 <input type="hidden" name="key" value={paymentInfo?.key} />
                 <input type="hidden" name="txnid" value={paymentInfo?.txnId} />
                 <input type="hidden" name="productinfo" value={paymentInfo?.productinfo} />
@@ -91,7 +91,7 @@ const Pricing = (props) => {
                         <span class="pl-2">API Access: <span class="font-semibold">NO</span></span>
                     </li>
                 </ul>
-                {status == "authenticated" && <button className="w-full text-slate-500 border border-slate-500 hover:bg-slate-800 hover:text-white active:bg-slate-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="submit">UPGRADE &#8594;</button>}
+                {status == "authenticated" && <button disabled={!!session.user.premium} className={!!session.user.premium ? `w-full bg-gray-200 text-slate-500 border font-bold uppercase px-8 py-3 rounded outline-none mr-1 mb-1 `: "w-full text-slate-500 border border-slate-500 hover:bg-slate-800 hover:text-white active:bg-slate-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"} type="submit">{ (!!session.user.premium) ? "PREMIUM ACTIVE" : "UPGRADE ➡"}</button>}
                 </form>
                 {status == "unauthenticated" && <a href="/api/auth/signin"><button className="w-full text-slate-500 border border-slate-500 hover:bg-slate-800 hover:text-white active:bg-slate-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">UPGRADE &#8594;</button></a>}
                 </div>
