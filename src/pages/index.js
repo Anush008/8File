@@ -3,6 +3,7 @@ import { authOptions } from '../pages/api/auth/[...nextauth]';
 import { unstable_getServerSession } from "next-auth/next";
 import crypto from 'crypto';
 import dynamic from 'next/dynamic';
+import { useEffect, useState } from "react";
 
 const Pricing = dynamic(() => import("../components/Pricing"), {
   loading: () => 'Loading...',
@@ -15,10 +16,21 @@ const Updates = dynamic(() => import("../components/Updates"), {
 });
 
 export default function Home({paymentInfo}) {
+  const [stats, setStats] = useState({
+    downloads: 0,
+    files: 0,
+    encrypted: 0,
+    users: 0
+  });
+  useEffect(() => {
+    fetch("/api/getstats")
+      .then(res => res.json())
+      .then(data => setStats(data))
+  }, []);
   return (
       <>
           <Hero />
-          <Stats />
+          <Stats stats={stats}/>
           <Updates />
           <Pricing paymentInfo={paymentInfo || {}}/>
           </>
@@ -45,6 +57,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       paymentInfo: {email, fname, key, txnId, amount, productinfo, surl, furl, hash}
+
     },
   }}
   else return {
