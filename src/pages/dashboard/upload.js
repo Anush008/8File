@@ -1,8 +1,4 @@
-import dynamic from 'next/dynamic'
-
-const FileUploader = dynamic(() => import("../../components/FileUploader"), {
-  loading: () => 'Loading...',
-});
+import FileUploader from '../../components/FileUploader';
 
 export default function Upload() {
   return (
