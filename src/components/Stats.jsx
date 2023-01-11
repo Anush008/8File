@@ -1,7 +1,7 @@
 import formatBytes from "../utils/fileSizeParser";
 
 export default function({stats}){
-    return(<section class="text-gray-600 body-font">
+    return(<section class="text-gray-600 body-font bg-white">
     <div id= "stats" class="container px-5 py-10 mx-auto">
       <div class="flex flex-wrap -m-4 text-center">
         <div class="p-4 md:w-1/4 sm:w-1/2 w-full">

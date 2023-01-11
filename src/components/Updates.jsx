@@ -1,5 +1,5 @@
 export default function Updates() {
-return (<section class="text-gray-600 body-font">
+return (<section class="bg-white text-gray-600 body-font">
 <div class="container px-5 mx-auto">
   <div class="flex flex-wrap w-full">
     <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
