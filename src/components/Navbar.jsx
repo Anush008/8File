@@ -7,7 +7,7 @@ import Image from 'next/image';
 const Navbar = () => {
   const { data: session, status } = useSession();
   const authenticated = status === "authenticated";
-  return (<header class="text-gray-600 body-font">
+  return (<header class="text-gray-600 body-font bg-white">
     <div class="container mx-auto flex flex-wrap p-3 flex-col md:flex-row items-center">
       <Link class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="/">
         <LogoSVG />
@@ -17,7 +17,6 @@ const Navbar = () => {
         <Link href={authenticated ? "/dashboard/upload" : "/api/auth/signin"} class="font-medium mr-5 hover:text-gray-900">Upload</Link>
         <Link href={authenticated ? "/dashboard" : "/api/auth/signin"} class="font-medium mr-5 hover:text-gray-900">Files</Link>
         <Link href="/#pricing" class="font-medium mr-5 hover:text-gray-900">Pricing</Link>
-        <Link href="/#faq" class="font-medium mr-5 hover:text-gray-900">FAQs</Link>
       </nav>
       <div class="flex items-center space-x-4">
         {authenticated && <Link href={session?.user?.image}><Image width="10" height="10" alt="User's avatar" class="w-10 h-10 rounded-full" src={session?.user?.image || "/images/favicon.ico"} /></Link>}
