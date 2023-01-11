@@ -2,7 +2,7 @@
 export default function TermsOfService() {
 return(
     <div className="hero min-h-full bg-slate-100">
-    <div className="hero-content text-left">
+    <div className="hero-content text-black text-left">
       <div className="max-w-ful">
 <h1><strong>Terms & Conditions</strong></h1>
 <p>This is 8-File(“Company”, “we”, “our”, “us”).</p>
