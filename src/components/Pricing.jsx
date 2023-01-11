@@ -129,7 +129,7 @@ const Pricing = (props) => {
                         <span class="pl-2">API Access: <span class="font-semibold">YES</span></span>
                     </li>
                 </ul>
-                <a href="/contact" class="w-full text-slate-500 border border-slate-500 hover:bg-slate-800 hover:text-white active:bg-slate-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Contact Us &#8599;</a>
+                <a href="mailto:anushshetty90@gmail.com" class="w-full text-slate-500 border border-slate-500 hover:bg-slate-800 hover:text-white active:bg-slate-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Contact Us &#8599;</a>
             </div>
         </div>
     </div>
