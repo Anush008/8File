@@ -1,9 +1,10 @@
 import LogoSVG from '../components/LogoSVG';
+import Link from 'next/link';
 
 const Footer = () => {
 
-  return (<footer class="text-gray-600 body-font bg-slate-200 mt-4 pt-4">
-    <div class="container px-5 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+  return (<footer class="text-gray-600 body-font bg-slate-100 mt-4 pt-4">
+    <div class="container px-5 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col pb-6">
       <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
         <a href="#" class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
           <LogoSVG />
@@ -14,33 +15,33 @@ const Footer = () => {
       <div class="justify-end flex-grow flex justify-endflex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
 
         <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-          <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-1">CATEGORIES</h2>
+          <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-1">INFORMATION</h2>
           <nav class="list-none mb-10">
             <li>
-              <a class="text-gray-600 hover:text-gray-800">Pehla Link</a>
+              <Link href="/privacy" class="text-gray-600 hover:text-gray-800">Privacy Policy</Link>
             </li>
             <li>
-              <a class="text-gray-600 hover:text-gray-800">Doosa Link</a>
+              <Link href="/tos" class="text-gray-600 hover:text-gray-800">TOS</Link>
             </li>
             <li>
-              <a class="text-gray-600 hover:text-gray-800">Teesra Link</a>
+              <Link href="/refund" class="text-gray-600 hover:text-gray-800">Refund Policy</Link>
             </li>
           </nav>
         </div>
         <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-          <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-1">CATEGORIES</h2>
+          <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-1">NAVIGATION</h2>
           <nav class="list-none mb-10">
             <li>
-              <a class="text-gray-600 hover:text-gray-800">Upload Files</a>
+              <Link href="/dashboard" class="text-gray-600 hover:text-gray-800">Upload Files</Link>
             </li>
             <li>
-              <a class="text-gray-600 hover:text-gray-800">Browse Files</a>
+              <Link href="/dashboard/upload" class="text-gray-600 hover:text-gray-800">Browse Files</Link>
             </li>
             <li>
-              <a class="text-gray-600 hover:text-gray-800">Pricing Link</a>
+              <Link href="/#pricing" class="text-gray-600 hover:text-gray-800">Pricing</Link>
             </li>
             <li>
-              <a class="text-gray-600 hover:text-gray-800">Sign In</a>
+              <Link href="mailto:anushshetty90@gmail.com" class="text-gray-600 hover:text-gray-800">Contact Us</Link>
             </li>
           </nav>
         </div>
