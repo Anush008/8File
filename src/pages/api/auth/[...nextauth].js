@@ -6,7 +6,6 @@ import html from "../../../utils/html";
 import {createTransport} from "nodemailer";
 import GitHubProvider from "next-auth/providers/github";
 import DiscordProvider from "next-auth/providers/discord";
-import GoogleProvider from "next-auth/providers/google";
 import execute from "../../../utils/MySQL";
 //Stooge comment
 export const authOptions = {
@@ -36,11 +35,11 @@ export const authOptions = {
     clientSecret: process.env.GITHUB_SECRET,
     allowDangerousEmailAccountLinking: true
   }),
-  GoogleProvider({
-    clientId: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    allowDangerousEmailAccountLinking: true
-  }),
+  // GoogleProvider({
+  //   clientId: process.env.GOOGLE_CLIENT_ID,
+  //   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  //   allowDangerousEmailAccountLinking: true
+  // }),
   DiscordProvider({
     clientId: process.env.DISCORD_CLIENT_ID,
     clientSecret: process.env.DISCORD_CLIENT_SECRET,
