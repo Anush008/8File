@@ -6,7 +6,7 @@ const Hero = () => {
   const { status } = useSession();
   const authtenticated = status === "authenticated";
   return (
-    <div className="hero min-h-screen bg-slate-100">
+    <div className="hero min-h-screen bg-slate-200">
       <div className="hero-content text-center text-black">
         <div className="max-w-md">
           <h1 className="text-5xl font-bold"><span class="underline--magical">8File</span><span> - A file cloud that's truly <Typewriter
