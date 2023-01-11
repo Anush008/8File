@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 body {
+  @apply bg-slate-100;
   scroll-behavior: smooth;
-  background-color: white;
 }
 
 .underline--magical {
