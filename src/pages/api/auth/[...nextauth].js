@@ -17,6 +17,7 @@ export const authOptions = {
     username: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE_NAME,
+    synchronize: true
   }),
   callbacks: {
     async session({ session, token, user }) {
