@@ -8,6 +8,6 @@ const {DOWNLOADS, FILES, ENCRYPTED} = (await execute("SELECT SUM(`DOWNLOADS`) AS
     stats.files = FILES;
     stats.encrypted = ENCRYPTED;
     stats.users = USERS;
-res.setHeader('Cache-Control', 's-maxage=1440000');
+res.setHeader('Cache-Control', 's-maxage=60,stale-while-revalidate=1296000');
 res.json(stats)
 }
