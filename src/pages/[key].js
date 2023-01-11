@@ -3,11 +3,7 @@ import FileIconSVG from '../components/FileIconSVG';
 import parseBytes from "../utils/fileSizeParser";
 import JsFileDownloader from 'js-file-downloader';
 import { useState } from 'react';
-import dynamic from 'next/dynamic'
 
-const Updates = dynamic(() => import("../components/Updates"), {
-  loading: () => 'Loading...',
-});
 
 const Post = ({ S3KEY, NAME, SIZE, UPLOADEDON }) => {
   const [progress, setProgress] = useState(0);
@@ -40,7 +36,7 @@ const Post = ({ S3KEY, NAME, SIZE, UPLOADEDON }) => {
         alert(error.message);
       });
   }
-  return (<><div class="flex items-center pb-12 justify-center p-12 bg-slate-200 mb-6">
+  return (<div class="flex items-center pb-12 justify-center p-12 bg-slate-100 mb-6">
     <div class="mx-auto w-full max-w-[550px] bg-white shadow-xl border-2 rounded-xl">
       <form
         class="py-6 px-9"
@@ -83,8 +79,6 @@ const Post = ({ S3KEY, NAME, SIZE, UPLOADEDON }) => {
       </form>
     </div>
   </div>
-  <Updates />
-  </>
   )
 }
 
