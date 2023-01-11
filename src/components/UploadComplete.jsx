@@ -1,7 +1,7 @@
 
 const UploadComplete = ({url, show, setShow}) =>
 {return (<>
-    <input type="checkbox" id="my-modal" className="modal-toggle" checked={show}/>
+    <input type="checkbox" id="my-modal" className="modal-toggle" onChange={()=>{}} checked={show}/>
     <div className="modal">
       <div className="modal-box">
         <h3 className="font-bold text-2xl pb-2">Your file is available here:</h3>
