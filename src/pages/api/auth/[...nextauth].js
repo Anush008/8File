@@ -8,7 +8,7 @@ import GitHubProvider from "next-auth/providers/github";
 import DiscordProvider from "next-auth/providers/discord";
 import GoogleProvider from "next-auth/providers/google";
 import execute from "../../../utils/MySQL";
-
+//Stooge comment
 export const authOptions = {
   adapter: TypeORMLegacyAdapter({
     type: "mysql",
