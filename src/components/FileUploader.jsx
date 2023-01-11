@@ -9,7 +9,7 @@ const FileUploader = () => {
   const { data: session ,status } = useSession({
     required: true,
     onUnauthenticated() {
-      router.push("/");
+      router.push("/api/auth/signin");
     }
   });
   useEffect(() => {}, []);
@@ -42,7 +42,7 @@ const FileUploader = () => {
   }
 
   return (<>
-    <div class="flex items-center justify-center p-12 bg-slate-200 mb-6">
+    <div class="flex items-center justify-center p-12 bg-slate-100 mb-6">
       <UploadComplete id="complete" url={fileUrl} show={showModal} setShow={setShowModal}/>
   
       <div class="mx-auto w-full max-w-[550px] bg-white shadow-xl border-2 rounded-xl">

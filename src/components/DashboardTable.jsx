@@ -10,7 +10,7 @@ export default function DashboardTable({results}) {
     const { data: session ,status } = useSession({
       required: true,
       onUnauthenticated() {
-        router.push("/");
+        router.push("/api/auth/signin");
       }
     });
     const handleDelete = async(S3KEY, NAME, ID, setDeleting) => {
@@ -26,7 +26,7 @@ export default function DashboardTable({results}) {
       setDeleting(false);
     }
       return (<>
-      {!!results.length ? <div className="hero min-h-screen bg-slate-200 mb-10">
+      {!!results.length ? <div className="hero min-h-screen bg-slate-100 mb-10">
         <table class="bg-slate-100 overflow-x-auto table w-full flex flex-col min-h-screen shadow-xl border-2 rounded-3xl">
         <thead>
           <tr>
