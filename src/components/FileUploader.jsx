@@ -117,11 +117,11 @@ const FileUploader = () => {
                   </svg>
                 </button>
               </div>
-              <div class="relative mt-5 h-[10px] w-full rounded-lg bg-[#E2E5EF]">
+              {progress ? <div class="relative mt-5 h-[10px] w-full rounded-lg bg-[#E2E5EF]">
                 <progress value={progress} max="100"
                   class="progress absolute left-0 right-0 h-full w-full"
                 ></progress>
-              </div>
+              </div> : ""}
             </div>}
           </div>
 
