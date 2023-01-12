@@ -1,4 +1,4 @@
-Available at [anush.gq](https://www.anush.gq/).
+Made with ❤️ and (Next.js)[https://nextjs.org/].
 
 
 
