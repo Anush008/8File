@@ -27,7 +27,7 @@ export default function DashboardTable({results}) {
     }
       return (<>
       {!!results.length ? <div className="hero min-h-screen bg-slate-100 mb-10">
-        <table class="bg-slate-100 overflow-x-auto table w-full flex flex-col max-w-screen-sm max-w-screen-md max-w-screen-lg min-h-screen shadow-xl border-2 rounded-3xl">
+        <table class="overflow-x-auto table w-screen max-width-screen-lg flex flex-col min-h-screen shadow-xl border-2 rounded-3xl">
         <thead>
           <tr>
             <th>ID</th>
@@ -37,7 +37,7 @@ export default function DashboardTable({results}) {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody class="dark:bg-slate-100">
+        <tbody >
           {results.map((result) => {
         const [deleting, setDeleting] = useState(false);
         return (<tr id={result?.ID}>
