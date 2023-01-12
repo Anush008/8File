@@ -1,4 +1,4 @@
-Made with ❤️ and (Next.js)[https://nextjs.org/].
+Made with ❤️ and [Next.js](https://nextjs.org/).
 
 
 
