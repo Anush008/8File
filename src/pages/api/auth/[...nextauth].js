@@ -72,6 +72,11 @@ export const authOptions = {
           }
         })
   ],
+  theme: {
+    colorScheme: "light",
+    brandColor: "#1E293B", 
+    buttonText: "#000000" 
+  }
 }
 
 export default NextAuth(authOptions)
