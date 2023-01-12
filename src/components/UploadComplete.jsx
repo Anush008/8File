@@ -3,7 +3,7 @@ const UploadComplete = ({url, show, setShow}) =>
 {return (<>
     <input type="checkbox" id="my-modal" className="modal-toggle" onChange={()=>{}} checked={show}/>
     <div className="modal">
-      <div className="modal-box">
+      <div className="modal-box border-white">
         <h3 className="font-bold text-2xl pb-2">Your file is available here:</h3>
         <a onClick={()=> { window.navigator.clipboard.writeText(url); alert("Link copied to clipboard.")}} class="inline-flex text-lg overflow-hidden w-full text-black bg-slate-200 rounded-sm group">
 <span class="px-3.5 py-2 text-white bg-black hover:bg-slate-800 flex items-center justify-center">
@@ -12,7 +12,7 @@ const UploadComplete = ({url, show, setShow}) =>
 <span class="pl-4 pr-5 py-2.5">{url}</span>
 </a> 
 <div className="modal-action">
-          <button onClick={() => {setShow(false)}} htmlFor="my-modal" className=" text-slate-600 border border-slate-600 hover:bg-slate-800 hover:text-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Got It!</button>
+          <button onClick={() => {setShow(false)}} htmlFor="my-modal" className=" text-white border border-slate-600 hover:bg-slate-800 hover:text-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Got It!</button>
         </div>
       </div>
     </div></>)}
