@@ -4,6 +4,7 @@ import Head from 'next/head';
 //import Script from 'next/script';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App({
   Component,
@@ -34,6 +35,7 @@ export default function App({
       </Head>
     <Navbar/>
       <Component {...pageProps} />
+      <Analytics />
       <Footer />
     </SessionProvider>
   )

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next-auth/typeorm-legacy-adapter": "^2.0.1",
+    "@vercel/analytics": "^0.1.7",
     "aws-sdk": "^2.1291.0",
     "axios": "^1.2.2",
     "daisyui": "^2.46.1",
