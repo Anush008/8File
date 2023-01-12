@@ -7,7 +7,7 @@ import {createTransport} from "nodemailer";
 import GitHubProvider from "next-auth/providers/github";
 import DiscordProvider from "next-auth/providers/discord";
 import execute from "../../../utils/MySQL";
-import GoogleProvider from "next-auth/providers/google";
+import Auth0Provider from "next-auth/providers/auth0";
 //Stooge comment
 export const authOptions = {
   adapter: TypeORMLegacyAdapter({
@@ -36,10 +36,11 @@ export const authOptions = {
     clientSecret: process.env.GITHUB_SECRET,
     allowDangerousEmailAccountLinking: true
   }),
-  GoogleProvider({
-    clientId: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  //  allowDangerousEmailAccountLinking: true
+  Auth0Provider({
+    clientId: process.env.AUTH0_CLIENT_ID,
+    clientSecret: process.env.AUTH0_CLIENT_SECRET,
+    issuer: process.env.AUTH0_ISSUER,
+    allowDangerousEmailAccountLinking: true
   }),
   DiscordProvider({
     clientId: process.env.DISCORD_CLIENT_ID,
