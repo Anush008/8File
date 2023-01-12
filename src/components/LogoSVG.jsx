@@ -1,9 +1,9 @@
-const LogoSVG = () => (<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+const LogoSVG = ({color}) => (<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
 viewBox="0 0 640.000000 640.000000"
  preserveAspectRatio="xMidYMid meet" class="w-10 h-10">
 
 <g transform="translate(0.000000,640.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
+fill={color} stroke="none">
 <path d="M2955 5749 c-778 -80 -1464 -499 -1896 -1157 -308 -468 -456 -1044
 -409 -1582 46 -520 209 -945 523 -1365 76 -101 355 -380 468 -467 274 -213
 636 -387 964 -463 251 -59 527 -83 747 -66 320 24 571 84 843 201 304 130 542
