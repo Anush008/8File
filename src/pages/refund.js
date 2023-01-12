@@ -2,7 +2,7 @@ export default function Refund() {
 return(
     
     <div className="hero min-h-full bg-slate-100">
-    <div className="hero-content text-left">
+    <div className="hero-content text-black text-left">
       <div className="max-w-ful">
 <h1 className="text-xl"><strong>Subscription Refunds</strong></h1>
 <p className="text-lg">Refunds will be given at our sole discretion. If you have used the service for half of the billing month, you are not eligible for a refund. Custom subscriptions are not refunded in any capacity.</p>
