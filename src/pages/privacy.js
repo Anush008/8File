@@ -2,7 +2,7 @@
 const PrivacyPolicy = () => {
     return (
       <div className="hero min-h-full bg-slate-100">
-      <div className="hero-content text-left">
+      <div className="hero-content text-black text-left">
         <div className="max-w-ful">
         <h3><strong>Privacy Policy</strong></h3>
         <p>Last Updated: Jan 08 2023</p>
