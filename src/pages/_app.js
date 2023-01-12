@@ -4,6 +4,7 @@ import Head from 'next/head';
 //import Script from 'next/script';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
@@ -31,9 +32,7 @@ export default function App({
   <meta name="twitter:image" content="https://i.ibb.co/fxjK3WT/snapshot.png"/>
   <link rel="shortcut icon" href="/images/favicon.ico" />
       </Head>
-{/* <Script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=63ba90d2cb51d30019514ba9&product=sticky-share-buttons&source=platform" async="async"></Script> */}
-      <Navbar />
-      <div class="sharethis-sticky-share-buttons"></div>
+    <Navbar/>
       <Component {...pageProps} />
       <Footer />
     </SessionProvider>
