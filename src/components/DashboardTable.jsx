@@ -37,7 +37,7 @@ export default function DashboardTable({results}) {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody class="bg-slate-100">
+        <tbody class="dark:bg-slate-100">
           {results.map((result) => {
         const [deleting, setDeleting] = useState(false);
         return (<tr id={result?.ID}>
