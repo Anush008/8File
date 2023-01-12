@@ -12,7 +12,7 @@ const UploadComplete = ({url, show, setShow}) =>
 <span class="pl-4 pr-5 py-2.5">{url}</span>
 </a> 
 <div className="modal-action">
-          <button onClick={() => {setShow(false)}} htmlFor="my-modal" className=" text-white border border-slate-600 hover:bg-slate-800 hover:text-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Got It!</button>
+          <button onClick={() => {setShow(false)}} htmlFor="my-modal" className=" text-black border border-slate-600 hover:bg-slate-800 hover:text-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Got It!</button>
         </div>
       </div>
     </div></>)}
