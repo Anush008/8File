@@ -32,10 +32,10 @@ const Footer = () => {
           <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-1">NAVIGATION</h2>
           <nav class="list-none mb-10">
             <li>
-              <Link href="/dashboard" class="text-gray-600 hover:text-gray-800">Upload Files</Link>
+              <Link href="/dashboard/upload" class="text-gray-600 hover:text-gray-800">Upload Files</Link>
             </li>
             <li>
-              <Link href="/dashboard/upload" class="text-gray-600 hover:text-gray-800">Browse Files</Link>
+              <Link href="/dashboard" class="text-gray-600 hover:text-gray-800">Browse Files</Link>
             </li>
             <li>
               <Link href="/#pricing" class="text-gray-600 hover:text-gray-800">Pricing</Link>
