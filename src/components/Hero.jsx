@@ -8,10 +8,10 @@ const Hero = () => {
   return (
     <div className="hero min-h-screen bg-slate-100">
       <div className="hero-content text-center text-slate-800">
-        <div className="max-w-md">
+        <div className="max-w-md animate__animated animate__backInUp">
           <h1 className="text-5xl font-bold"><span class="underline--magical">8File</span><span> - A file cloud that's truly <Typewriter
             options={{
-              strings: ['secure', 'private', 'encrypted', 'reliable'],
+              strings: ['secure', 'private', 'anonymous', 'encrypted', 'reliable'],
               autoStart: true,
               loop: true,
             }}

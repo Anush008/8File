@@ -5,12 +5,12 @@ const Pricing = (props) => {
     const paymentInfo = props.paymentInfo;
     return (<section class="bg-white pb-4 pt-2" id="pricing">
     <div class="px-4 mx-auto max-w-screen-xl lg:py-4 lg:px-6">
-        <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+        <div data-aos="zoom-in-up" class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
             <h2 class="mb-2 text-4xl tracking-tight font-bold text-gray-900">Premium Pricing</h2>
             <p class="font-normal text-gray-500 sm:text-xl">Get more storage and features at prices that seem too good to be true.</p>
         </div>
         <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
-            <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border-gray-100 shadow border-2">
+            <div data-aos="fade-up-right" class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border-gray-100 shadow border-2">
                 <h3 class="mb-4 text-2xl font-semibold">Basic</h3>
                 <p class="font-normal text-gray-500 sm:text-lg">For individuals and regular use cases without dedicated support</p>
                 <div class="flex justify-center items-baseline my-4">
@@ -47,7 +47,7 @@ const Pricing = (props) => {
                 </ul>
                 <a class={`w-full bg-gray-200 text-slate-500 border font-bold uppercase px-8 py-3 rounded outline-none mr-1 mb-1 `}>{ (status === "authenticated" && session.user.premium) ? "YOU'VE UPGRADED" : "CURRENT PLAN"}</a>
             </div>
-            <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border-2 border-gray-100 shadow ">
+            <div data-aos="fade-up" class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border-2 border-gray-100 shadow ">
                 <form action={process.env.NEXT_PUBLIC_PAYU_CHECKOUT_ENDPOINT} method='POST'>
                 <input type="hidden" name="key" value={paymentInfo?.key} />
                 <input type="hidden" name="txnid" value={paymentInfo?.txnId} />
@@ -95,7 +95,7 @@ const Pricing = (props) => {
                 </form>
                 {status == "unauthenticated" && <a href="/api/auth/signin"><button className="w-full text-slate-500 border border-slate-500 hover:bg-slate-800 hover:text-white active:bg-slate-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">UPGRADE &#8594;</button></a>}
                 </div>
-            <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border-2 border-gray-100 shadow">
+            <div data-aos="fade-up-left" class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border-2 border-gray-100 shadow">
                 <h3 class="mb-4 text-2xl font-semibold">Enterprise</h3>
                 <p class="font-normal text-gray-500 sm:text-lg">For companies and enterprises looking for a storage solution at scale</p>
                 <div class="flex justify-center items-baseline my-4">

@@ -1,15 +1,21 @@
 import { SessionProvider } from "next-auth/react";
 import '../styles/globals.css';
 import Head from 'next/head';
-//import Script from 'next/script';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Analytics } from '@vercel/analytics/react';
+import 'animate.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+import { useEffect } from 'react';
 
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }) {
+  useEffect(() => {
+    AOS.init();
+    }, []);
   return (
     <SessionProvider session={session}>
       <Head >

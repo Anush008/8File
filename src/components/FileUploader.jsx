@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import parseBytes from "../utils/fileSizeParser";
 import UploadComplete from "./UploadComplete";
+
 const FileUploader = () => {
   const router = useRouter();
   const { data: session ,status } = useSession({
@@ -46,7 +47,7 @@ const FileUploader = () => {
     <div class="flex items-center justify-center p-12 bg-slate-100 mb-6">
       <UploadComplete id="complete" url={fileUrl} show={showModal} setShow={setShowModal}/>
   
-      <div class="mx-auto w-full max-w-[550px] bg-white shadow-xl border-2 rounded-xl">
+      <div class="animate__animated animate__backInUp mx-auto w-full max-w-[550px] bg-white shadow-xl border-2 rounded-xl">
         <form
           class="py-6 px-9"
           onSubmit={handleSubmit}

@@ -4,10 +4,11 @@ import LogoSVG from '../components/LogoSVG';
 import formatBytes from '../utils/fileSizeParser';
 import Image from 'next/image';
 
+
 const Navbar = () => {
   const { data: session, status } = useSession();
   const authenticated = status === "authenticated";
-  return (<header class="text-white body-font bg-slate-800">
+  return (<header class="animate__animated animate__fadeInDown text-white body-font bg-slate-800">
     <div class="container mx-auto flex flex-wrap p-3 flex-col md:flex-row items-center">
       <Link class="flex title-font font-medium items-center text-white mb-4 md:mb-0" href="/">
         <LogoSVG color="#ffffff"/>
