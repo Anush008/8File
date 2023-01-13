@@ -42,7 +42,7 @@ export default function DashboardTable({results}) {
         <tbody >
           {results.map((result) => {
         const [deleting, setDeleting] = useState(false);
-        return (<tr key={result?.ID}>
+        return (<tr id={result?.ID} key={result?.ID}>
         <td>{result?.ID}</td>
             <td>
               <div class="flex items-center space-x-3">  
