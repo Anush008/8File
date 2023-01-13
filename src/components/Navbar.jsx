@@ -15,7 +15,7 @@ const Navbar = () => {
       </Link>
       <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
         <Link href={authenticated ? "/dashboard/upload" : "/api/auth/signin"} class="font-medium mr-5 hover:text-xl">Upload</Link>
-        <Link href={authenticated ? "/dashboard" : "/api/auth/signin"} class="font-medium mr-5 hover:text-xl">Files</Link>
+        <Link href={authenticated ? "/dashboard" : "/api/auth/signin"} class="font-medium mr-5 hover:text-xl">Dashboard</Link>
         <Link href="/#pricing" class="font-medium mr-5 hover:text-xl">Pricing</Link>
       </nav>
       <div class="flex items-center space-x-4">
