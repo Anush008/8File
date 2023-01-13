@@ -11,7 +11,7 @@ const Hero = () => {
         <div className="max-w-md">
           <h1 className="text-5xl font-bold"><span class="underline--magical">8File</span><span> - A file cloud that's truly <Typewriter
             options={{
-              strings: ['secure', 'private', 'anonymous', 'encrypted', 'reliable'],
+              strings: ['secure', 'private', 'encrypted', 'reliable'],
               autoStart: true,
               loop: true,
             }}
