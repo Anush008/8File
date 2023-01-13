@@ -18,7 +18,8 @@ export async function getServerSideProps(context) {
   const session = await unstable_getServerSession(context.req, context.res, authOptions);
   if (session) {
     const results = await execute("SELECT * FROM `files` WHERE `UPLOADEDBY` = ? ORDER BY `UPLOADEDON` DESC", [session.user.id]);
-    results.forEach((result) => { result.UPLOADEDON = result.UPLOADEDON.toLocaleString() });
+    results.forEach((result) => { result.UPLOADEDON = result.UPLOADEDON.toLocaleString();
+    result.AUTODELETE = result.AUTODELETE ? result?.AUTODELETE?.toLocaleDateString() : "NEVER"});
     return {
       props: {results}
     }

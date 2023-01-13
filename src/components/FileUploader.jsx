@@ -23,11 +23,12 @@ const FileUploader = () => {
     e.preventDefault();
     const form = e.target.elements;
     const file = form.file.files[0];
+    const autoDelete = form.autodelete.value ?? "";
     setProgress(0);
     if (fileName === "") return alert("No file selected!");
     setProgress(1);
     const encryptionKey = form.encryptionKey.value;
-    const { url, fields, fileId } = await fetch(`/api/signedposturl?key=${encryptionKey}&name=${file.name}&size=${file.size}&uploaderId=${session.user.id}`).then(response => response.json());
+    const { url, fields, fileId } = await fetch(`/api/signedposturl?key=${encryptionKey}&name=${file.name}&size=${file.size}&uploaderId=${session.user.id}&autodelete=${autoDelete}`).then(response => response.json());
     const data = { ...fields, file };
     const formData = new FormData();
     for (const name in data) formData.append(name, data[name]);
@@ -70,7 +71,7 @@ const FileUploader = () => {
               Upload File
             </label>
 
-            <div class="mb-8">
+            <div class="mb-4">
               <input type="file" name="file" id="file" class="sr-only" onChange={(e) => { setFileName(e.target.files[0].name); setFileSize(parseBytes(e.target.files[0].size)) }} required />
               <label
                 htmlFor="file"
@@ -89,6 +90,22 @@ const FileUploader = () => {
                 </div>
               </label>
             </div>
+            
+          <div class="mb-5">
+            <label
+              htmlFor="autodelete"
+              class="mb-3 block text-base font-medium text-[#07074D]"
+            >Auto-Delete</label>
+            <input class="w-full rounded-md border-2 border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-slate-800 focus:shadow-md" 
+            placeholder="Never" 
+            type="text" 
+            onBlur={(e) => {if(!e.target.value) e.target.type = 'text'}} 
+            onFocus={(e) => e.target.type = 'date'}  
+            name="autodelete" 
+            id="autodelete"
+            min={new Date(new Date().getTime() + 24 * 60 * 60 * 1000).toISOString().split('T')[0]} /> 
+          </div>
+
             {!!fileName && <div class="rounded-md bg-slate-100 py-4 px-8">
               <div class="flex items-center justify-between">
                 <span class="truncate pr-3 text-base font-medium text-[#07074D]">

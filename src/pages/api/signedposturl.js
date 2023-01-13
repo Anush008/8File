@@ -10,6 +10,8 @@ export default async function handler(req, res) {
   const KEY = FILE_ID + "-" + FILE_NAME;
   const FILE_SIZE = req.query.size;
   const UPLOADER_ID = req.query.uploaderId;
+  const AUTODELETEDATE = req.query.autodelete || null;
+ 
   await s3.createPresignedPost({
     Fields: {
       key: KEY,
@@ -29,7 +31,7 @@ export default async function handler(req, res) {
     signed.fields["X-Amz-Server-Side-Encryption-Customer-Key"] = customerKey.toString('base64');
     signed.fields["X-Amz-Server-Side-Encryption-Customer-Key-MD5"] = md5;
     signed.fileId = FILE_ID;
-    execute("INSERT INTO `files` (`ID`, `S3KEY`, `SIZE`, `NAME`, `UPLOADEDBY`) VALUES (?, ?, ?, ?, ?)", [FILE_ID, KEY, FILE_SIZE, FILE_NAME, UPLOADER_ID]).catch((e) => console.log(e.message));
+    execute("INSERT INTO `files` (`ID`, `S3KEY`, `SIZE`, `NAME`, `UPLOADEDBY`, `AUTODELETE`) VALUES (?, ?, ?, ?, ?, ?)", [FILE_ID, KEY, FILE_SIZE, FILE_NAME, UPLOADER_ID, AUTODELETEDATE]).catch((e) => console.log(e.message));
     res.status(200).json(signed);
   });
 }

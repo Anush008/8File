@@ -35,13 +35,14 @@ export default function DashboardTable({results}) {
             <th>Size</th>
             <th>Uploaded On</th>
             <th>Downloads</th>
+            <th>Auto-delete</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody >
           {results.map((result) => {
         const [deleting, setDeleting] = useState(false);
-        return (<tr id={result?.ID}>
+        return (<tr key={result?.ID}>
         <td>{result?.ID}</td>
             <td>
               <div class="flex items-center space-x-3">  
@@ -54,6 +55,7 @@ export default function DashboardTable({results}) {
             <td>{formatBytes(result?.SIZE)}</td>
             <td>{result?.UPLOADEDON}</td>
             <td>{result?.DOWNLOADS}</td>
+            <td>{result?.AUTODELETE}</td>
             <th>
             <div className="btn-group">
       <button className={`btn btn-error btn-outline btn-square ${deleting ? "loading" : ""}`} onClick={() => handleDelete(result.S3KEY, result.NAME, result.ID, setDeleting)}>{deleting ? "" : <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>}</button>
