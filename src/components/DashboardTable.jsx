@@ -10,7 +10,7 @@ export default function DashboardTable({results}) {
     const { data: session ,status } = useSession({
       required: true,
       onUnauthenticated() {
-        router.push("/api/auth/signin");
+        router.push("/signin");
       }
     });
     const handleDelete = async(S3KEY, NAME, ID, setDeleting) => {

@@ -11,7 +11,8 @@ import execute from "../../../utils/MySQL";
 
 export const authOptions = {
   pages: {
-    newUser: "/dashboard/profile"
+    newUser: "/dashboard/profile",
+    signIn: "/signin",
   },
   adapter: TypeORMLegacyAdapter({
     type: "mysql",

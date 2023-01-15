@@ -10,7 +10,7 @@ const FileUploader = () => {
   const { data: session ,status } = useSession({
     required: true,
     onUnauthenticated() {
-      router.push("/api/auth/signin");
+      router.push("/signin");
     }
   });
   useEffect(() => {}, []);
