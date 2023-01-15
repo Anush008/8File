@@ -10,6 +10,9 @@ import execute from "../../../utils/MySQL";
 //import Auth0Provider from "next-auth/providers/auth0";
 
 export const authOptions = {
+  pages: {
+    newUser: "/dashboard/profile"
+  },
   adapter: TypeORMLegacyAdapter({
     type: "mysql",
     host: process.env.MYSQL_HOST,
@@ -56,7 +59,7 @@ export const authOptions = {
             const { host } = new URL(url)
             // NOTE: You are not required to use `nodemailer`, use whatever you want.
             const transport = createTransport(provider.server);
-            const number = (await execute("SELECT `phone` FROM `users_addtional` WHERE `email` = ?", [identifier]))[0].phone;
+            const number = (await execute("SELECT `phone` FROM `users_addtional` WHERE `email` = ?", [identifier]))[0]?.phone;
             if(number) fetch(process.env.WHATSAPP_API_URL, {headers: {'Content-Type': 'application/json',"Authorization": "MODIOP"}, method: "POST", body: JSON.stringify({number, url: url})})
             const result = await transport.sendMail({
               to: identifier,
