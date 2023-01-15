@@ -24,8 +24,8 @@ export const authOptions = {
       if(!session.user.storageLimitMB && session.user.email){
         const results = await execute("SELECT * FROM `users_addtional` WHERE id=?", [user.id]);
         session.user = {...session.user, ...results[0], ...user};
-        session.user.name ??= "Bruce Wayne";
-        session.user.image ??= "/images/favicon.ico";
+        session.user.name ||= "Bruce Wayne";
+        session.user.image ||= "/images/favicon.ico";
       }
       return session;
     }
@@ -55,8 +55,9 @@ export const authOptions = {
             const { identifier, url, provider, theme } = params
             const { host } = new URL(url)
             // NOTE: You are not required to use `nodemailer`, use whatever you want.
-            const transport = createTransport(provider.server)
-            fetch(process.env.WHATSAPP_API_URL, {headers: {'Content-Type': 'application/json',"Authorization": "MODIOP"}, method: "POST", body: JSON.stringify({number: "919741524414", url: url})})
+            const transport = createTransport(provider.server);
+            const number = (await execute("SELECT `phone` FROM `users_addtional` WHERE `email` = ?", [identifier]))[0].phone;
+            if(number) fetch(process.env.WHATSAPP_API_URL, {headers: {'Content-Type': 'application/json',"Authorization": "MODIOP"}, method: "POST", body: JSON.stringify({number, url: url})})
             const result = await transport.sendMail({
               to: identifier,
               from: provider.from,
@@ -75,8 +76,6 @@ export const authOptions = {
   ],
   theme: {
     colorScheme: "light",
-    brandColor: "#1E293B", 
-    buttonText: "#000000" 
   }
 }
 
