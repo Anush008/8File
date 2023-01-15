@@ -19,6 +19,8 @@ export default function DashboardTable({results}) {
       if (response.status === 200) {
         document.getElementById(ID).remove();
         alert(`Deleted ${NAME} permanently.`);
+        const event = new Event("visibilitychange");
+        document.dispatchEvent(event);
       }
       else {
         alert("Something went wrong");

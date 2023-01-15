@@ -39,6 +39,8 @@ const FileUploader = () => {
       const url = window.location.protocol + "//" +window.location.host + "/" + fileId;
       setFileUrl(url);
       setShowModal(true);
+      const event = new Event("visibilitychange");
+      document.dispatchEvent(event);
     }
     else alert("Error");
   }
