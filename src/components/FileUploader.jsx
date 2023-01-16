@@ -10,7 +10,7 @@ const FileUploader = () => {
   const { data: session ,status } = useSession({
     required: true,
     onUnauthenticated() {
-      router.push("/signin");
+      router.push("/api/auth/signin");
     }
   });
   useEffect(() => {}, []);
@@ -46,47 +46,47 @@ const FileUploader = () => {
   }
 
   return (<>
-    <div class="flex items-center justify-center p-12 bg-slate-100 mb-6">
+    <div className="flex items-center justify-center p-12 bg-slate-100 mb-6">
       <UploadComplete id="complete" url={fileUrl} show={showModal} setShow={setShowModal}/>
   
-      <div class="animate__animated animate__backInUp mx-auto w-full max-w-[550px] bg-white shadow-xl border-2 rounded-xl">
+      <div className="animate__animated animate__backInUp mx-auto w-full max-w-[550px] bg-white shadow-xl border-2 rounded-xl">
         <form
-          class="py-6 px-9"
+          className="py-6 px-9"
           onSubmit={handleSubmit}
         >
-          <div class="mb-5">
+          <div className="mb-5">
             <label
               htmlFor="encryptionKey"
-              class="mb-3 block text-base font-medium text-[#07074D]"
+              className="mb-3 block text-base font-medium text-[#07074D]"
             >Encryption Key</label>
             <input
               type="text"
               name="encryptionKey"
               id="encryptionKey"
               placeholder="SECRET KEY"
-              class="w-full rounded-md border-2 border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-slate-800 focus:shadow-md"
+              className="w-full rounded-md border-2 border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-slate-800 focus:shadow-md"
               required
             />
           </div>
 
-          <div class="mb-6 pt-2">
-            <label class="mb-5 block text-xl font-semibold text-[#07074D]">
+          <div className="mb-6 pt-2">
+            <label className="mb-5 block text-xl font-semibold text-[#07074D]">
               Upload File
             </label>
 
-            <div class="mb-4">
-              <input type="file" name="file" id="file" class="sr-only" onChange={(e) => { setFileName(e.target.files[0].name); setFileSize(parseBytes(e.target.files[0].size)) }} required />
+            <div className="mb-4">
+              <input type="file" name="file" id="file" className="sr-only" onChange={(e) => { setFileName(e.target.files[0].name); setFileSize(parseBytes(e.target.files[0].size)) }} required />
               <label
                 htmlFor="file"
-                class="border-2 relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
+                className="border-2 relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
               >
                 <div>
-                  <span class="mb-2 block text-xl font-semibold text-[#07074D]">
+                  <span className="mb-2 block text-xl font-semibold text-[#07074D]">
                     {!!fileName ? "Choose another file" : "Select a file to upload"}
                   </span>
-                  {/*<span class="mb-2 block text-base font-medium text-[#6B7280]">Or</span>*/}
+                  {/*<span className="mb-2 block text-base font-medium text-[#6B7280]">Or</span>*/}
                   <span
-                    class="hover:bg-slate-800 hover:text-white active:bg-slate-600 inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]"
+                    className="hover:bg-slate-800 hover:text-white active:bg-slate-600 inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]"
                   >
                     Browse
                   </span>
@@ -94,12 +94,12 @@ const FileUploader = () => {
               </label>
             </div>
             
-          <div class="mb-5">
+          <div className="mb-5">
             <label
               htmlFor="autodelete"
-              class="mb-3 block text-base font-medium text-[#07074D]"
+              className="mb-3 block text-base font-medium text-[#07074D]"
             >Auto-Delete</label>
-            <input class="w-full rounded-md border-2 border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-slate-800 focus:shadow-md" 
+            <input className="w-full rounded-md border-2 border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-slate-800 focus:shadow-md" 
             placeholder="Never" 
             type="text" 
             onBlur={(e) => {if(!e.target.value) e.target.type = 'text'}} 
@@ -109,12 +109,12 @@ const FileUploader = () => {
             min={new Date(new Date().getTime() + 24 * 60 * 60 * 1000).toISOString().split('T')[0]} /> 
           </div>
 
-            {!!fileName && <div class="rounded-md bg-slate-100 py-4 px-8">
-              <div class="flex items-center justify-between">
-                <span class="truncate pr-3 text-base font-medium text-[#07074D]">
+            {!!fileName && <div className="rounded-md bg-slate-100 py-4 px-8">
+              <div className="flex items-center justify-between">
+                <span className="truncate pr-3 text-base font-medium text-[#07074D]">
                   {`${fileName}, ${fileSize}.`}
                 </span>
-                <button class={`text-[#07074D] ${!!progress ? "invisible" : "visible"}`} onClick={() => { setFileName(""); }}>
+                <button className={`text-[#07074D] ${!!progress ? "invisible" : "visible"}`} onClick={() => { setFileName(""); }}>
                   <svg
                     width="10"
                     height="10"
@@ -137,15 +137,15 @@ const FileUploader = () => {
                   </svg>
                 </button>
               </div>
-              {progress ? <div class="relative mt-5 h-[10px] w-full rounded-lg bg-[#E2E5EF]">
+              {progress ? <div className="relative mt-5 h-[10px] w-full rounded-lg bg-[#E2E5EF]">
                 <progress value={progress} max="100"
-                  class="progress absolute left-0 right-0 h-full w-full"
+                  className="progress absolute left-0 right-0 h-full w-full"
                 ></progress>
               </div> : ""}
             </div>}
           </div>
 
-          <div><button class={`${!!progress ? "w-full btn btn-disabled text-lg hover:text-white disabled" : "w-full text-slate-600 border border-slate-600 hover:bg-slate-800 hover:text-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"}`}>{!!progress ? (progress == 100 ? "ENCRYPTING..." : "UPLOADING...") : "UPLOAD"}</button></div>
+          <div><button className={`${!!progress ? "w-full btn btn-disabled text-lg hover:text-white disabled" : "w-full text-slate-600 border border-slate-600 hover:bg-slate-800 hover:text-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"}`}>{!!progress ? (progress == 100 ? "ENCRYPTING..." : "UPLOADING...") : "UPLOAD"}</button></div>
         </form>
       </div>
     </div>

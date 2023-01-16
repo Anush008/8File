@@ -1,6 +1,6 @@
 const LogoSVG = ({color}) => (<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
 viewBox="0 0 640.000000 640.000000"
- preserveAspectRatio="xMidYMid meet" class="w-10 h-10">
+ preserveAspectRatio="xMidYMid meet" className="w-10 h-10">
 
 <g transform="translate(0.000000,640.000000) scale(0.100000,-0.100000)"
 fill={color} stroke="none">

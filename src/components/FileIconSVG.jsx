@@ -1,6 +1,6 @@
 const FileIconSVG = () => {
 return(
-<svg version="1.0" class="inline-flex w-20 h-20" xmlns="http://www.w3.org/2000/svg"
+<svg version="1.0" className="inline-flex w-20 h-20" xmlns="http://www.w3.org/2000/svg"
  width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
  preserveAspectRatio="xMidYMid meet">
 
