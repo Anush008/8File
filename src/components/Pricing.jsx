@@ -45,7 +45,7 @@ const Pricing = (props) => {
                         <span className="pl-2">API Access: <span className="font-semibold">NO</span></span>
                     </li>
                 </ul>
-                <a className={`w-full bg-gray-200 text-slate-500 border font-bold uppercase px-8 py-3 rounded outline-none mr-1 mb-1 `}>{ (status === "authenticated" && session.user.premium) ? "YOU'VE UPGRADED" : "CURRENT PLAN"}</a>
+                <a href="#" className={`w-full bg-gray-200 text-slate-500 border font-bold uppercase px-8 py-3 rounded outline-none mr-1 mb-1 `}>{ (status === "authenticated" && session.user.premium) ? "YOU'VE UPGRADED" : "CURRENT PLAN"}</a>
             </div>
             <div data-aos="fade-up" className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border-2 border-gray-100 shadow ">
                 <form action={process.env.NEXT_PUBLIC_PAYU_CHECKOUT_ENDPOINT} method='POST'>
