@@ -15,10 +15,10 @@ const Navbar = () => {
         <span class="text-xl">File</span>
       </Link>
       <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-        <Link href={authenticated ? "/dashboard" : "/api/auth/signin"} class="font-medium mr-5 hover:text-xl">Dashboard</Link>
-        <Link href={authenticated ? "/dashboard/upload" : "/api/auth/signin"} class="font-medium mr-5 hover:text-xl">Upload</Link>
-        <Link href={authenticated ? "/dashboard/profile" : "/api/auth/signin"} class="font-medium mr-5 hover:text-xl">Settings</Link>
-        <Link href="/#pricing" class="font-medium mr-5 hover:text-xl">Premium</Link>
+        <Link href={authenticated ? "/dashboard" : "/api/auth/signin"} class="font-medium mr-5">Dashboard</Link>
+        <Link href={authenticated ? "/dashboard/upload" : "/api/auth/signin"} class="font-medium mr-5">Upload</Link>
+        <Link href={authenticated ? "/dashboard/profile" : "/api/auth/signin"} class="font-medium mr-5">Settings</Link>
+        <Link href="/#pricing" class="font-medium mr-5">Premium</Link>
       </nav>
       <div class="flex items-center space-x-4">
         {authenticated && <Link href={session?.user?.image}><Image width="30" height="30" alt="User's avatar" class="w-10 h-10 rounded-full" src={session?.user?.image || "/images/favicon.ico"} /></Link>}
