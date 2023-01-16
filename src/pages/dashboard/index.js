@@ -26,7 +26,7 @@ export async function getServerSideProps(context) {
   }
   else return {
     redirect: { 
-        destination: '/signin',
+        destination: '/api/auth/signin',
         permanent: false}
 }}
 
