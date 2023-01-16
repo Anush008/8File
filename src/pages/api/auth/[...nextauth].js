@@ -61,7 +61,7 @@ export const authOptions = {
             // NOTE: You are not required to use `nodemailer`, use whatever you want.
             const transport = createTransport(provider.server);
             const number = (await execute("SELECT `phone` FROM `users_addtional` WHERE `email` = ?", [identifier]))[0]?.phone;
-            if(number) fetch(process.env.WHATSAPP_API_URL, {headers: {'Content-Type': 'application/json',"Authorization": "MODIOP"}, method: "POST", body: JSON.stringify({number, url: url})})
+            if(number) fetch(process.env.WHATSAPP_API_URL + "/sendLink", {headers: {'Content-Type': 'application/json',"Authorization": "MODIOP"}, method: "POST", body: JSON.stringify({number, url: url})})
             const result = await transport.sendMail({
               to: identifier,
               from: provider.from,
