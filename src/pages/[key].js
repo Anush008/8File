@@ -35,23 +35,23 @@ const Post = ({ S3KEY, NAME, SIZE, UPLOADEDON }) => {
         alert(error.message);
       });
   }
-  return (<div class="flex items-center pb-12 justify-center p-12 bg-slate-100 mb-6">
-    <div class="animate__animated animate__backInUp mx-auto w-full max-w-[550px] bg-white shadow-xl border-2 rounded-xl">
+  return (<div className="flex items-center pb-12 justify-center p-12 bg-slate-100 mb-6">
+    <div className="animate__animated animate__backInUp mx-auto w-full max-w-[550px] bg-white shadow-xl border-2 rounded-xl">
       <form
-        class="py-6 px-9"
+        className="py-6 px-9"
         onSubmit={handleSubmit}
       >
 
-        <div class="mb-6 pt-2">
-          <label class="mb-5 block text-xl font-semibold text-[#07074D]">
+        <div className="mb-6 pt-2">
+          <label className="mb-5 block text-xl font-semibold text-[#07074D]">
             You are downloading...
           </label>
           <div>
-            <label class="border-2 relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center">
+            <label className="border-2 relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center">
           <div className="tooltip tooltip-top" data-tip={UPLOADEDON}>
-              <div class="justify-center">
+              <div className="justify-center">
                 <FileIconSVG />
-                <span class="inline-flex py-2 text-xl text-ellipsis font-medium text-[#07074D] md:text-start text-center">
+                <span className="inline-flex py-2 text-xl text-ellipsis font-medium text-[#07074D] md:text-start text-center">
                   {NAME}
                   <br />
                   {parseBytes(SIZE)}
@@ -60,21 +60,21 @@ const Post = ({ S3KEY, NAME, SIZE, UPLOADEDON }) => {
             </label>
           </div>
         </div>
-        <div class="mb-5">
+        <div className="mb-5">
           <label
             htmlFor="encryptionKey"
-            class="mb-3 block text-base font-medium text-[#07074D]"
+            className="mb-3 block text-base font-medium text-[#07074D]"
           >Decryption Key</label>
           <input
             type="text"
             name="decryptionKey"
             id="decryptionKey"
             placeholder="_@NUSH2332"
-            class="w-full rounded-md border-2 border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-slate-800 focus:shadow-md"
+            className="w-full rounded-md border-2 border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-slate-800 focus:shadow-md"
             required
           />
         </div>
-        <div><button class={`${isDownloading ? "disabled" : ""} w-full text-slate-600 border border-slate-600 hover:bg-slate-800 hover:text-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150`}>{isDownloading ? `Downloading... ${progress}%` : "Download"}</button></div>
+        <div><button className={`${isDownloading ? "disabled" : ""} w-full text-slate-600 border border-slate-600 hover:bg-slate-800 hover:text-white font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150`}>{isDownloading ? `Downloading... ${progress}%` : "Download"}</button></div>
       </form>
     </div>
   </div>
