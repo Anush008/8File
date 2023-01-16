@@ -17,6 +17,7 @@ const Footer = () => {
         <div className="lg:w-1/4 md:w-1/2 w-full px-4">
           <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-1">INFORMATION</h2>
           <nav className="list-none mb-10">
+            <ul>
             <li>
               <Link href="/privacy" className="text-gray-600 hover:text-gray-800">Privacy Policy</Link>
             </li>
@@ -26,11 +27,13 @@ const Footer = () => {
             <li>
               <Link href="/refund" className="text-gray-600 hover:text-gray-800">Refund Policy</Link>
             </li>
+            </ul>
           </nav>
         </div>
         <div className="lg:w-1/4 md:w-1/2 w-full px-4">
           <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-1">NAVIGATION</h2>
           <nav className="list-none mb-10">
+            <ul>
             <li>
               <Link href="/dashboard/upload" className="text-gray-600 hover:text-gray-800">Upload Files</Link>
             </li>
@@ -43,6 +46,7 @@ const Footer = () => {
             <li>
               <Link href="mailto:anushshetty90@gmail.com" className="text-gray-600 hover:text-gray-800">Contact Us</Link>
             </li>
+            </ul>
           </nav>
         </div>
       </div>
