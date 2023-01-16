@@ -105,7 +105,7 @@ const PrivacyPolicy = () => {
         <ul>
           <li>
           <address>
-            <p><a class="text-md" href="mailto:anushshetty90@gmail.com">anushshetty90@gmail.com</a></p>
+            <p><a className="text-md" href="mailto:anushshetty90@gmail.com">anushshetty90@gmail.com</a></p>
           </address>
           </li>
         </ul>
