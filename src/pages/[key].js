@@ -69,7 +69,7 @@ const Post = ({ S3KEY, NAME, SIZE, UPLOADEDON }) => {
             type="text"
             name="decryptionKey"
             id="decryptionKey"
-            placeholder="_@NUSH2332"
+            placeholder="CASE SENSITIVE"
             className="w-full rounded-md border-2 border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-slate-800 focus:shadow-md"
             required
           />
