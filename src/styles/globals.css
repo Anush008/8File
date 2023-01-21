@@ -2,9 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+scroll-behavior: smooth;
+scroll-padding: 10rem;
+}
 body {
   @apply bg-slate-100;
-  scroll-behavior: smooth;
+
 }
 
 .underline--magical {
