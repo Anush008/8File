@@ -15,7 +15,7 @@
     "aos": "^3.0.0-beta.6",
     "aws-sdk": "^2.1305.0",
     "axios": "^1.2.6",
-    "daisyui": "^2.47.0",
+    "daisyui": "^2.49.0",
     "dotenv": "^16.0.3",
     "js-file-downloader": "^1.1.24",
     "mysql2": "^2.3.3",
