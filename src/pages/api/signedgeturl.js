@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     const {href: url} = new URL(s3.getSignedUrl('getObject', {
         Bucket: process.env.AWS_BUCKET_NAME,
         Key: FileKey,
-        Expires: 500000,
+        Expires: 5000,
         SSECustomerAlgorithm: 'AES256',
       }));
 
