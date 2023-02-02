@@ -2,8 +2,10 @@ import execute from "../../utils/MySQL";
 
 export default async function handler(req, res) {
 const stats = {};
-const {DOWNLOADS, FILES, ENCRYPTED} = (await execute("SELECT SUM(`DOWNLOADS`) AS `DOWNLOADS`, COUNT(*) AS `FILES`, SUM(`SIZE`) AS `ENCRYPTED` FROM `files`"))[0];
-const {USERS} = (await execute("SELECT COUNT(*) AS `USERS` FROM `users`"))[0];
+const [[{DOWNLOADS, FILES, ENCRYPTED}], [{USERS}]] = await Promise.all([
+    execute("SELECT SUM(`DOWNLOADS`) AS `DOWNLOADS`, COUNT(*) AS `FILES`, SUM(`SIZE`) AS `ENCRYPTED` FROM `files`"),
+    execute("SELECT COUNT(*) AS `USERS` FROM `users`")
+]);
 stats.downloads = DOWNLOADS;
 stats.files = FILES;
 stats.encrypted = ENCRYPTED;
