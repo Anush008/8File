@@ -106,7 +106,7 @@ return(<>
               id="avatar"
               placeholder={session?.user?.image}
               min="0"
-              className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none"
+              className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base focus:border-slate-800 font-medium text-[#6B7280] outline-none"
             />
           </div>
     
