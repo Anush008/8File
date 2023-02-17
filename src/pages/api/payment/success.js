@@ -1,7 +1,7 @@
 import execute from "../../../utils/MySQL"
 
 export default async function handler(req, res) {
-
+    //TODO: Verify payment hash before proceeding
     if(req.body.status == "success"){
         const premiumExpiry = new Date(new Date().setDate(new Date().getDate() + 30));
         execute("UPDATE `users_addtional` set `premium` = 1, `storageLimit` = `storageLimit` * 10,`premiumExpiry` = ?, `txnid` = ? where `email` = ?", [premiumExpiry, req.body.txnid, req.body.email]);
