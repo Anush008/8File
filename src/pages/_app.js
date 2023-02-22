@@ -8,7 +8,6 @@ import 'animate.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 import { useEffect } from 'react';
-import Script from 'next/script'
 
 export default function App({
   Component,
@@ -39,8 +38,9 @@ export default function App({
   <meta name="twitter:description" content="Securely transfer files to users with GZIP compression and server-side AES-256 encryption. Upto 10GB for FREE!"/>
   <meta name="twitter:image" content="https://i.ibb.co/fxjK3WT/snapshot.png"/>
   <link rel="shortcut icon" href="/images/favicon.ico" />
-  <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3464741639698457"
- crossorigin="anonymous"></Script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3464741639698457"
+
+     crossorigin="anonymous"></script>
    </Head>
     <Navbar/>
       <Component {...pageProps} />
