@@ -1,4 +1,4 @@
-Made with ❤️ and [Next.js](https://nextjs.org/).
+Made with ❤️ and [Next.js](https://nextjs.org/) and [TailwindCSS](https://tailwindcss.com/).
 
 8File - A file cloud that's truly
 encrypted!
