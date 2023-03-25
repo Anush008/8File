@@ -53,8 +53,8 @@ const Footer = () => {
     </div>
     <div className="bg-slate-800 ">
       <div className="container justify-center mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-        <p className="text-white text-sm text-center sm:text-left">Made with ❤ and <a href="https://nextjs.org/" rel="noopener noreferrer" className="hover:text-slate-400 ml-1" target="_blank">Next.js</a><!-- — 
-          <a href="https://github.com/ankithmrao" rel="noopener noreferrer" className="hover:text-slate-400" target="_blank"> @Ankith365</a> and <a href="https://github.com/Anush008" rel="noopener noreferrer" className="ml-1 hover:text-slate-400" target="_blank">@Anush008</a>-->
+        <p className="text-white text-sm text-center sm:text-left">Made with ❤ and <a href="https://nextjs.org/" rel="noopener noreferrer" className="hover:text-slate-400 ml-1" target="_blank">Next.js</a>{/* — 
+          <a href="https://github.com/ankithmrao" rel="noopener noreferrer" className="hover:text-slate-400" target="_blank"> @Ankith365</a> and <a href="https://github.com/Anush008" rel="noopener noreferrer" className="ml-1 hover:text-slate-400" target="_blank">@Anush008</a>*/}
         </p>
       </div>
     </div>
