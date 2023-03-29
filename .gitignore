@@ -36,5 +36,6 @@ yarn-error.log*
 next-env.d.ts
 
 otpServer.js
-
 Thumbs.db
+pnpm-lock.yaml
+set

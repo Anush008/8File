@@ -42,13 +42,12 @@ export async function getServerSideProps(context) {
   if (session) {
   const email = session.user.email;
   const fname = session.user.name.split(" ")[0];
-  const key = process.env.NEXT_PUBLIC_PAYU_KEY;
-  const salt = process.env.PAYU_SALT;
   const txnId = crypto.randomBytes(6).toString("hex");;
-  const amount = process.env.PAYU_PREMIUM_AMOUNT;
   const productinfo = "8File - Premium Subscription";
-  const surl = process.env.PAYU_SURL;
-  const furl = process.env.PAYU_FURL;
+  const {PAYU_PREMIUM_AMOUNT: amount,
+        NEXT_PUBLIC_PAYU_KEY: key,
+        PAYU_SALT: salt,
+        PAYU_SURL: surl, PAYU_FURL: furl } = process.env;
   const cryp = crypto.createHash('sha512');
   const text = key+'|'+txnId+'|'+amount+'|'+productinfo+'|'+fname+'|'+email+'|||||||||||'+salt;
   cryp.update(text);
