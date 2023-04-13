@@ -55,27 +55,7 @@ export const authOptions = {
           server: process.env.EMAIL_SERVER,
           from: process.env.EMAIL_FROM,
           maxAge: 24 * 60 * 60, // How long email links are valid for (default 24h)
-          async sendVerificationRequest(params) {
-            const { identifier, url, provider, theme } = params
-            const { host } = new URL(url)
-            // NOTE: You are not required to use `nodemailer`, use whatever you want.
-            const transport = createTransport(provider.server);
-            const number = (await execute("SELECT `phone` FROM `users_addtional` WHERE `email` = ?", [identifier]))[0]?.phone;
-            if(number) fetch(process.env.WHATSAPP_API_URL + "/sendLink", {headers: {'Content-Type': 'application/json',"Authorization": "MODIOP"}, method: "POST", body: JSON.stringify({number, url: url})})
-            const result = await transport.sendMail({
-              to: identifier,
-              from: provider.from,
-              subject: `Sign in to ${host}`,
-              text: text({ url, host }),
-              html: html({ url, host, theme }),
-            })
        
-
-            const failed = result.rejected.concat(result.pending).filter(Boolean)
-            if (failed.length) {
-              throw new Error(`Email(s) (${failed.join(", ")}) could not be sent`)
-            }
-          }
         })
   ],
   theme: {
