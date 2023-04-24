@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next-auth/typeorm-legacy-adapter": "^2.0.1",
+    "@next-auth/typeorm-legacy-adapter": "^2.0.2",
     "@vercel/analytics": "^1.0.0",
     "animate.css": "^4.1.1",
     "aos": "^3.0.0-beta.6",
