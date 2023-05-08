@@ -19,7 +19,7 @@
     "dotenv": "^16.0.3",
     "js-file-downloader": "^1.1.24",
     "mysql2": "^2.3.3",
-    "next": "13.3.2",
+    "next": "13.4.1",
     "next-auth": "^4.22.1",
     "nodemailer": "^6.9.1",
     "react": "18.2.0",
