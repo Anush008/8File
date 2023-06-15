@@ -24,7 +24,7 @@
     "nodemailer": "^6.9.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typewriter-effect": "^2.19.0"
+    "typewriter-effect": "^2.20.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
