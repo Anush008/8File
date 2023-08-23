@@ -1,10 +1,10 @@
 import mysql from 'mysql2';
 const connection = mysql.createConnection({
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    database: process.env.MYSQL_DATABASE_NAME,
-    password: process.env.MYSQL_PASSWORD,
-  });
+  uri: process.env.PLANETSCALE_PRISMA_DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
 
 //Promisify the execute()
 

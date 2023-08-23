@@ -1,12 +1,10 @@
 import NextAuth from "next-auth"
 import EmailProvider from "next-auth/providers/email"
-import { TypeORMLegacyAdapter } from "@next-auth/typeorm-legacy-adapter";
-import text from "../../../utils/text";
-import html from "../../../utils/html";
-import {createTransport} from "nodemailer";
 import GitHubProvider from "next-auth/providers/github";
 import DiscordProvider from "next-auth/providers/discord";
 import execute from "../../../utils/MySQL";
+import { PrismaAdapter } from "@next-auth/prisma-adapter"
+import prisma from '../../../utils/prisma'
 //import Auth0Provider from "next-auth/providers/auth0";
 
 export const authOptions = {
@@ -14,15 +12,7 @@ export const authOptions = {
     newUser: "/dashboard/profile",
     signIn: "/signin",
   },
-  adapter: TypeORMLegacyAdapter({
-    type: "mysql",
-    host: process.env.MYSQL_HOST,
-    port: process.env.MYSQL_PORT,
-    username: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE_NAME,
-    synchronize: true
-  }),
+  adapter: PrismaAdapter(prisma),
   callbacks: {
     async session({ session, token, user }) {
       if(!session.user.storageLimitMB && session.user.email){
