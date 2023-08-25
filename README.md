@@ -24,12 +24,12 @@
 
 <div align="center">
   <img src="https://github.com/Anush008/8File/assets/46051506/d0f377fb-c688-453c-b8f4-03ae60cfc358" alt="PayU Payment Gateway" width="800">
-  <p>PayU Payment Gateway</p>
+  <h3>PayU Payment Gateway</h3>
 </div>
 
 <div align="center">
   <img src="https://github.com/Anush008/8File/assets/46051506/e03a1272-d2b6-4a45-b75d-72f008a97e79" alt="Subscriptions Catalogue" width="800">
-  <p>Subscriptions Catalogue</p>
+  <h3>Subscriptions Catalogue</h3>
 </div>
 
 ## File Management
@@ -40,24 +40,24 @@ Securely upload and download files with AES-256 encryption.
 
 <div align="center">
   <img src="https://github.com/Anush008/8File/assets/46051506/10a96464-0838-40fe-90e5-3087f15a1ce0" alt="File Uploader" width="800">
-  <p>File Uploader with AES-256 Encryption</p>
+  <h3>File Uploader with AES-256 Encryption</h3>
 </div>
 
 <div align="center">
   <img src="https://github.com/Anush008/8File/assets/46051506/83d9cfce-f967-4490-9fca-0d936aeba723" alt="File-Table Viewer" width="800">
-  <p>File-Table Viewer</p>
+  <h3>File-Table Viewer</h3>
 </div>
 
 <div align="center">
   <img src="https://github.com/Anush008/8File/assets/46051506/2c5a5199-00d2-45cb-911e-641307068c6f" alt="File Downloader" width="800">
-  <p>File Downloader</p>
+  <h3>File Downloader</h3>
 </div>
 
 ## Configuration
 
 <div align="center">
   <img src="https://github.com/Anush008/8File/assets/46051506/ae5771ed-7edd-420e-9c59-74064b4235a9" alt="Profile Configuration" width="800">
-  <p>Profile Configuration</p>
+  <h3>Profile Configuration</h3>
 </div>
 
 ---
